@@ -2,7 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Role;
 use App\Entity\User;
+use App\Entity\Activite;
+use App\Entity\ArticleBlog;
+use App\Entity\Commentaire;
+use App\Entity\NewLetterAbonne;
 use Symfony\Component\HttpFoundation\Response;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -15,9 +20,7 @@ class DashboardController extends AbstractDashboardController
 {
     public function index(): Response
     {
-        return parent::index(); {
-            return $this->render('admin/dashboard.html.twig'); // Modifiez cette ligne
-        }
+        //return parent::index();
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
@@ -30,14 +33,14 @@ class DashboardController extends AbstractDashboardController
 
         // Option 2. You can make your dashboard redirect to different pages depending on the user
         //
-        // if ('jane' === $this->getUser()->getUsername()) {
-        //     return $this->redirectToRoute('...');
-        // }
+        //if ('jane' === $this->getUser()->getUsername()) {
+        //    return $this->redirectToRoute('...');
+        //}
 
         // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
         // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
         //
-        // return $this->render('some/path/my-dashboard.html.twig');
+        return $this->render('admin/dashboard.html.twig');
     }
 
     public function configureDashboard(): Dashboard
@@ -50,6 +53,11 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section('Gestion des Entités');
-        yield MenuItem::linkToCrud('Utilisaeurs', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Utilisaeurs', 'fas fa-list', User::class);
+        yield MenuItem::linkToCrud('Activite', 'fas fa-list', Activite::class);
+        yield MenuItem::linkToCrud('ArticleBlog', 'fas fa-list', ArticleBlog::class);
+        yield MenuItem::linkToCrud('Commentaire', 'fas fa-list', Commentaire::class);
+        yield MenuItem::linkToCrud('NewLetterAbonne', 'fas fa-list', NewLetterAbonne::class);
+        yield MenuItem::linkToCrud('Role', 'fas fa-list', Role::class);
     }
 }
