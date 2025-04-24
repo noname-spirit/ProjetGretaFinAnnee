@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\RoleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RoleRepository::class)]
@@ -17,7 +16,7 @@ class Role
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    private ?string $name = null; // Renommé de nom à name
 
     #[ORM\Column]
     private ?bool $nonAbonne = null;
@@ -50,22 +49,14 @@ class Role
         return $this->id;
     }
 
-    public function setId(int $id): static
+    public function getName(): ?string // Méthode mise à jour
     {
-        $this->id = $id;
-
-        return $this;
+        return $this->name;
     }
 
-    public function getNom(): ?string
+    public function setName(string $name): static // Méthode mise à jour
     {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): static
-    {
-        $this->nom = $nom;
-
+        $this->name = $name;
         return $this;
     }
 
@@ -77,7 +68,6 @@ class Role
     public function setNonAbonne(bool $nonAbonne): static
     {
         $this->nonAbonne = $nonAbonne;
-
         return $this;
     }
 
@@ -89,7 +79,6 @@ class Role
     public function setAbonne(bool $abonne): static
     {
         $this->abonne = $abonne;
-
         return $this;
     }
 
@@ -101,7 +90,6 @@ class Role
     public function setDev(bool $dev): static
     {
         $this->dev = $dev;
-
         return $this;
     }
 
@@ -113,7 +101,6 @@ class Role
     public function setStagiaire(bool $stagiaire): static
     {
         $this->stagiaire = $stagiaire;
-
         return $this;
     }
 
@@ -125,7 +112,6 @@ class Role
     public function setSuperAdmin(bool $superAdmin): static
     {
         $this->superAdmin = $superAdmin;
-
         return $this;
     }
 

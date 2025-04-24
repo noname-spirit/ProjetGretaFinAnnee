@@ -22,22 +22,13 @@ class NewLetterAbonne
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 20)]
-    private ?string $telephone = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $activite = null;
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Activite $activite = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getNom(): ?string
@@ -48,7 +39,6 @@ class NewLetterAbonne
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -60,7 +50,6 @@ class NewLetterAbonne
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -72,31 +61,17 @@ class NewLetterAbonne
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
-    public function getTelephone(): ?string
-    {
-        return $this->telephone;
-    }
-
-    public function setTelephone(string $telephone): static
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
-    public function getActivite(): ?string
+    public function getActivite(): ?Activite
     {
         return $this->activite;
     }
 
-    public function setActivite(string $activite): static
+    public function setActivite(?Activite $activite): static
     {
         $this->activite = $activite;
-
         return $this;
     }
 }

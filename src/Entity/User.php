@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
@@ -19,11 +21,11 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $mail = null;
+    #[ORM\Column(length: 255, unique: true)] // Ajout de l'unicité pour l'email
+    private ?string $email = null;
 
     #[ORM\Column(length: 8)]
-    private ?string $mp = null;
+    private ?string $mp = null; // Considérez renommer en 'motDePasse' pour plus de clarté
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Role $idRole = null;
@@ -31,13 +33,6 @@ class User
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getNom(): ?string
@@ -48,7 +43,6 @@ class User
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -60,31 +54,28 @@ class User
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
-    public function getMail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->mail;
+        return $this->email;
     }
 
-    public function setMail(string $mail): static
+    public function setEmail(string $email): static
     {
-        $this->mail = $mail;
-
+        $this->email = $email;
         return $this;
     }
 
-    public function getMp(): ?string
+    public function getMp(): ?string // Considérez renommer en 'getMotDePasse'
     {
         return $this->mp;
     }
 
-    public function setMp(string $mp): static
+    public function setMp(string $mp): static // Considérez renommer en 'setMotDePasse'
     {
         $this->mp = $mp;
-
         return $this;
     }
 
@@ -96,7 +87,6 @@ class User
     public function setIdRole(?Role $idRole): static
     {
         $this->idRole = $idRole;
-
         return $this;
     }
 }

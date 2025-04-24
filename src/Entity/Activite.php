@@ -14,74 +14,26 @@ class Activite
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $salarier = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $entrepreneur = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $etufiant = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $autre = null;
+    private ?string $nom = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): static
+    public function getNom(): ?string
     {
-        $this->id = $id;
+        return $this->nom;
+    }
 
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
         return $this;
     }
 
-    public function getSalarier(): ?string
+    public function __toString(): string
     {
-        return $this->salarier;
-    }
-
-    public function setSalarier(string $salarier): static
-    {
-        $this->salarier = $salarier;
-
-        return $this;
-    }
-
-    public function getEntrepreneur(): ?string
-    {
-        return $this->entrepreneur;
-    }
-
-    public function setEntrepreneur(string $entrepreneur): static
-    {
-        $this->entrepreneur = $entrepreneur;
-
-        return $this;
-    }
-
-    public function getEtufiant(): ?string
-    {
-        return $this->etufiant;
-    }
-
-    public function setEtufiant(string $etufiant): static
-    {
-        $this->etufiant = $etufiant;
-
-        return $this;
-    }
-
-    public function getAutre(): ?string
-    {
-        return $this->autre;
-    }
-
-    public function setAutre(string $autre): static
-    {
-        $this->autre = $autre;
-
-        return $this;
+        return $this->nom ?? '';
     }
 }
