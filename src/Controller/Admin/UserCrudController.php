@@ -6,12 +6,21 @@ use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserCrudController extends AbstractCrudController
 {
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public static function getEntityFqcn(): string
     {
         return User::class;
@@ -32,11 +41,32 @@ class UserCrudController extends AbstractCrudController
             EmailField::new('email')->hideOnIndex(),
             TextField::new('mp')
                 ->setFormType(PasswordType::class)
+                ->onlyOnForms()
                 ->setLabel('Mot de passe'),
-            AssociationField::new('idRole')
+            AssociationField::new('role')
                 ->setLabel('Rôle')
                 ->setFormTypeOption('choice_label', 'name')
                 ->setRequired(true),
         ];
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if ($entityInstance instanceof User && $entityInstance->getPassword()) {
+            $hashedPassword = $this->passwordHasher->hashPassword($entityInstance, $entityInstance->getPassword());
+            $entityInstance->setPassword($hashedPassword);
+        }
+
+        parent::persistEntity($entityManager, $entityInstance);
+    }
+
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if ($entityInstance instanceof User && $entityInstance->getPassword()) {
+            $hashedPassword = $this->passwordHasher->hashPassword($entityInstance, $entityInstance->getPassword());
+            $entityInstance->setPassword($hashedPassword);
+        }
+
+        parent::updateEntity($entityManager, $entityInstance);
     }
 }
