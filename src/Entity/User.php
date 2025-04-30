@@ -2,13 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Repository\UserRepository;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,14 +20,14 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 255, unique: true)] // Ajout de l'unicité pour l'email
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 8)]
-    private ?string $mp = null; // Considérez renommer en 'motDePasse' pour plus de clarté
+    #[ORM\Column(length: 255)]
+    private ?string $motDePasse = null;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    private ?Role $idRole = null;
+    #[ORM\ManyToOne(targetEntity: Role::class, inversedBy: 'users')]
+    private ?Role $role = null;
 
     public function getId(): ?int
     {
@@ -68,25 +67,55 @@ class User
         return $this;
     }
 
-    public function getMp(): ?string // Considérez renommer en 'getMotDePasse'
+    public function getMotDePasse(): ?string
     {
-        return $this->mp;
+        return $this->motDePasse;
     }
 
-    public function setMp(string $mp): static // Considérez renommer en 'setMotDePasse'
+    public function setMotDePasse(string $motDePasse): static
     {
-        $this->mp = $mp;
+        $this->motDePasse = $motDePasse;
         return $this;
     }
 
-    public function getIdRole(): ?Role
+    public function getRole(): ?Role
     {
-        return $this->idRole;
+        return $this->role;
     }
 
-    public function setIdRole(?Role $idRole): static
+    public function setRole(?Role $role): static
     {
-        $this->idRole = $idRole;
+        $this->role = $role;
         return $this;
+    }
+
+    // Méthodes requises par l'interface UserInterface
+
+    public function getRoles(): array
+    {
+        $roles = $this->role ? [$this->role->getName()] : [];
+        $roles[] = 'ROLE_USER'; // Ajout de ROLE_USER par défaut
+        return array_unique($roles);
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->motDePasse;
+    }
+
+    public function getSalt(): ?string
+    {
+        return null; // Pas nécessaire si vous utilisez un algorithme de hachage moderne
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Effacez les données sensibles ici
+        $this->motDePasse = null; // Optionnel, si vous souhaitez effacer le mot de passe en clair
+    }
+
+    public function getUserIdentifier(): string // Correction ici
+    {
+        return $this->email; // Retourne l'email comme identifiant unique
     }
 }
