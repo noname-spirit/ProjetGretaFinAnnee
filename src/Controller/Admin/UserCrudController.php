@@ -54,7 +54,7 @@ class UserCrudController extends AbstractCrudController
     {
         if ($entityInstance instanceof User && $entityInstance->getPassword()) {
             $hashedPassword = $this->passwordHasher->hashPassword($entityInstance, $entityInstance->getPassword());
-            $entityInstance->setPassword($hashedPassword);
+            $entityInstance->setMotDePasse($hashedPassword);
         }
 
         parent::persistEntity($entityManager, $entityInstance);
@@ -64,7 +64,7 @@ class UserCrudController extends AbstractCrudController
     {
         if ($entityInstance instanceof User && $entityInstance->getPassword()) {
             $hashedPassword = $this->passwordHasher->hashPassword($entityInstance, $entityInstance->getPassword());
-            $entityInstance->setPassword($hashedPassword);
+            $entityInstance->setMotDePasse($hashedPassword);
         }
 
         parent::updateEntity($entityManager, $entityInstance);

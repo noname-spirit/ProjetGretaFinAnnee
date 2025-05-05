@@ -108,50 +108,89 @@
 
 
 				{# ----------------- section tarif---------------- #}
-				<div class="container mt-5" id="Tarifs">
-					<div class=" container row ">
-						<div class="row d-flex justify-content-start">
-							<div class=" col-6 fs-2 text-start ">LE MEILLEUR PLAN QUE NOUS PROPOSONS</div>
-							<div class="col-3">
-								<div class="card text-start" style="width: 15rem;">
+				<div class="container mt-5 mb-5" id="Tarifs">
+    <div class="row mb-4">
+        {# Title can span full width or be aligned #}
+        <div class="col-12 text-center text-lg-start">
+            <h2 class="fs-2 fw-bold">LE MEILLEUR PLAN QUE NOUS PROPOSONS</h2>
+            {# You might want a subtitle here #}
+            {# <p class="text-muted">Choisissez le plan qui correspond le mieux à vos besoins.</p> #}
+        </div>
+    </div>
 
-									<div class="card-body ">
-										<h5 class="card-title">Assistance Administrative Premium</h5>
-										<p class="card-text">550€ / PAR MOIS</p>
-									</div>
-									<ul class="list-group list-group-flush">
-										<li class="list-group-item">Toutes les prestations de l’offre Essentielle</li>
-										<li class="list-group-item">Gestion avancée des agendas et réunions</li>
-										<li class="list-group-item">Suivi et relance des factures</li>
-										<li class="list-group-item">Support client et gestion des appels</li>
-										<li class="list-group-item">
-											Rédaction et mise en page de documents professionnels</li>
-										<li class="list-group-item">
-											Assistance administrative personnalisée</li>
-									</ul>
-								</div>
-							</div>
+    {# Row for the pricing cards, centered on medium, aligned right on large screens #}
+    <div class="row justify-content-center justify-content-lg-end g-4">
 
-							<div class="col-3">
-								<div class="card text-start" style="width: 15rem;">
-
-									<div class="card-body">
-										<h5 class="card-title">Assistance Administrative Essentielle</h5>
-										<p class="card-text">250€ / PAR MOIS.</p>
-									</div>
-									<ul class="list-group list-group-flush">
-										<li class="list-group-item">Gestion des e-mails et courriers</li>
-										<li class="list-group-item">Planification de rendez-vous</li>
-										<li class="list-group-item">Suivi administratif basique</li>
-										<li class="list-group-item">Classement et archivage numérique</li>
-										<li class="list-group-item">Rédaction de documents simples</li>
-									</ul>
-								</div>
-							</div>
+        {# Card 1: Essentielle (Styled like Detailing Basic) #}
+        <div class="col-md-6 col-lg-5 col-xl-4">
+            <div class="card h-100 shadow-sm rounded-4 pricing-card card-basic">
+                {# Add banner similar to the "BEST PLAN" #}
+                {# <div class="best-plan-banner">MEILLEUR PRIX</div> #}
+                 {# Or use the existing banner text if applicable #}
+                 {# <div class="best-plan-banner">BEST PLAN</div> #}
 
 
-						</div>
-					</div>
+                <div class="card-body p-4 p-lg-5 d-flex flex-column">
+                    <h3 class="h5 fw-bold mb-3 text-uppercase">Assistance Administrative Essentielle</h3>
+
+                    <div class="price-display mb-4">
+                        <span class="price-amount">250€</span>
+                        <span class="price-period">/ PAR MOIS</span>
+                    </div>
+
+                    {# Mimic "Most Popular Plan" button - Adapt text as needed #}
+                    <div class="most-popular-btn">
+                         Plan le Plus Populaire
+                         {# Or simply "Plan Essentiel" if "Most Popular" isn't applicable #}
+                    </div>
+
+
+                    <ul class="feature-list text-start ">
+                        <li>Gestion des e-mails et courriers</li>
+                        <li>Planification de rendez-vous</li>
+                        <li>Suivi administratif basique</li>
+                        <li>Classement et archivage numérique</li>
+                        <li>Rédaction de documents simples</li>
+                    </ul>
+                    {# Optional: Add a button at the bottom #}
+                    {# <a href="#" class="btn btn-light mt-auto">Choisir ce plan</a> #}
+                </div>
+            </div>
+        </div>
+
+        {# Card 2: Premium (Styled like Premium Fit) #}
+        <div class="col-md-6 col-lg-5 col-xl-4">
+            <div class="card h-100 shadow-sm rounded-4 pricing-card card-premium">
+                <div class="card-body p-4 p-lg-5 d-flex flex-column">
+                    <h3 class="h5 fw-bold mb-3 text-uppercase">Assistance Administrative Premium</h3>
+
+                    <div class="price-display mb-4">
+                        <span class="price-amount">550€</span>
+                        <span class="price-period">/ PAR MOIS</span>
+                    </div>
+
+                    {# Mimic "Most Popular Plan" button - Adapt text as needed #}
+                     <div class="most-popular-btn">
+                         Plan le Plus Populaire
+                         {# Or simply "Plan Premium" #}
+                    </div>
+
+                    <ul class="feature-list text-start ">
+                        <li> Toutes les prestations de l’offre Essentielle</li>
+                        <li> Gestion avancée des agendas et réunions</li>
+                        <li> Suivi et relance des factures</li>
+                        <li> Support client et gestion des appels</li>
+                        <li> Rédaction et mise en page de documents professionnels</li>
+                        <li> Assistance administrative personnalisée</li>
+                    </ul>
+                     {# Optional: Add a button at the bottom #}
+                    {# <a href="#" class="btn btn-primary mt-auto">Choisir ce plan</a> #}
+                </div>
+            </div>
+        </div>
+
+    </div> {# End row for cards #}
+</div> {# End container #}
 
 					{# ----------------- section commentaire --------------- #}
 					<section class="py-5 bg-white">
@@ -273,7 +312,7 @@
 								<div class="card border-0">
 									<div class="position-relative">
 										<img
-										src="" class="card-img-top" alt="">
+										src="https://picsum.photos/100" class="card-img-top" alt="">
 
 										{#{% if work.button %}#}
 										<div class="position-absolute top-50 start-50 translate-middle">
