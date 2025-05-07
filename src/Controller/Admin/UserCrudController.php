@@ -39,7 +39,7 @@ class UserCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('prenom'),
             EmailField::new('email')->hideOnIndex(),
-            TextField::new('mp')
+            TextField::new('motDePasse')
                 ->setFormType(PasswordType::class)
                 ->onlyOnForms()
                 ->setLabel('Mot de passe'),
