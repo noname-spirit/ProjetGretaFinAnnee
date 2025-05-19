@@ -4,8 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container mt-5">
-		<h1 class="mb-4">Notre blog</h1>
+	<div class="container mt-5 mb-5">
+		<h1 class="mb-4 text-center">Notre blog</h1>
 
 		{# Article principal mis en avant #}
 		{% if latestArticle %}
@@ -13,8 +13,8 @@
 				<div class="card border-0 shadow-lg">
 					<div class="row g-0 align-items-center">
 						<div class="col-md-6">
-							{% if latestArticle.image %}
-								<img src="{{ latestArticle.image }}" class="img-fluid rounded-start" alt="{{ latestArticle.title }}">
+							{% if latestArticle.imageAsBase64 %}
+								<img src="data:image/jpeg;base64,{{ latestArticle.imageAsBase64 }}" class="img-fluid rounded-start" alt="{{ latestArticle.title }}">
 							{% else %}
 								<img src="/placeholder.jpg" class="img-fluid rounded-start" alt="Aucune image">
 							{% endif %}
@@ -35,8 +35,8 @@
 			{% for article in articles %}
 				<div class="col-md-4 mb-4">
 					<div class="card h-100 border-0 shadow-sm">
-						{% if article.image %}
-							<img src="{{ article.image }}" class="card-img-top" alt="{{ article.title }}">
+						{% if article.imageAsBase64 %}
+							<img src="data:image/jpeg;base64,{{ article.imageAsBase64 }}" class="card-img-top" alt="{{ article.title }}">
 						{% else %}
 							<img src="/placeholder.jpg" class="card-img-top" alt="Aucune image">
 						{% endif %}
