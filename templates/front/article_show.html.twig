@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ article.title }}
+	- Blog
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h1 class="mb-4">{{ article.title }}</h1>
+		<p class="text-muted">Publié le
+			{{ article.createdAt|date('d/m/Y') }}</p>
+
+		{# Affichage de l'image de l'article #}
+		{% if article.image %}
+			<img src="{{ article.image }}" class="img-fluid mb-4" alt="{{ article.title }}">
+		{% else %}
+			<img src="/placeholder.jpg" class="img-fluid mb-4" alt="Aucune image">
+		{% endif %}
+
+		{# Contenu de l'article #}
+		<div class="article-content">
+			{{ article.content|raw }}
+		</div>
+
+		{# Lien pour revenir à la liste des articles #}
+		<a href="{{ path('blog_index') }}" class="btn btn-secondary mt-4">Retour à la liste des articles</a>
+	</div>
+{% endblock %}

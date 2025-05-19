@@ -37,6 +37,8 @@
 			</div>
 		</div>
 
+		<div></div>
+
 		<div class="text-center" id="APropos">
 			<div class="row">
 				<div class="col">
@@ -147,12 +149,12 @@
 							{% if article_blog.imageAsBase64 %}
 								{# Use the new method #}
 								{# 
-								                           Ideally, you would also store and use the MIME type.
-								                           For example, if you had article_blog.imageMimeType:
-								                           <img src="data:{{ article_blog.imageMimeType }};base64,{{ article_blog.imageAsBase64 }}" class="card-img-top" alt="{{ article_blog.title }}">
-								                           
-								                           For now, assuming JPEG/PNG as in your original code:
-								                        #}
+																																																								                           Ideally, you would also store and use the MIME type.
+																																																								                           For example, if you had article_blog.imageMimeType:
+																																																								                           <img src="data:{{ article_blog.imageMimeType }};base64,{{ article_blog.imageAsBase64 }}" class="card-img-top" alt="{{ article_blog.title }}">
+																																																								                           
+																																																								                           For now, assuming JPEG/PNG as in your original code:
+																																																								                        #}
 								<img src="data:image/jpeg;base64,{{ article_blog.imageAsBase64 }}" class="card-img-top" alt="{{ article_blog.title|default('Article Image') }}">
 							{% else %}
 								{# Make sure this path is correct and the asset exists #}
@@ -173,5 +175,5 @@
 			</div>
 		</div>
 		{# The extra </div> tag you mentioned was not present in the snippet you provided to correct, 
-		   but if it was there before this block, ensure your HTML structure is valid. #}
+														   but if it was there before this block, ensure your HTML structure is valid. #}
 	{% endblock %}
