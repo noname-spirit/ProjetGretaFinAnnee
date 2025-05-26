@@ -38,7 +38,7 @@
 		</div>
 
 		<div></div>
-
+		{# ----------- À propos ----------- #}
 		<div class="text-center" id="APropos">
 			<div class="row">
 				<div class="col">
@@ -47,19 +47,34 @@
 				<div class="col pr-5 mt-5 text-start">
 					<h3>À propos</h3>
 					<p>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+						Avec Julia
+						<span class="emoji">💫</span>
+						Secrétaire Administrative, gagnez en sérénité ! Je vous offre un soutien
+																																																																																																																																																																																																						                sur mesure pour gérer votre administratif (planning, documents, démarches...) et vous
+																																																																																																																																																																																																						                libérer du temps précieux. Concentrez-vous sur votre cœur de métier, que vous soyez
+																																																																																																																																																																																																						                entrepreneur, artisan, profession libérale ou PME. Ma mission : apporter clarté
+																																																																																																																																																																																																						                et efficacité à votre gestion quotidienne.
 					</p>
-					<button type="button" class="rounded-pill">Lire plus</button>
+					<button type="button" class="rounded-pill">Voir plus</button>
 				</div>
 			</div>
-
+			{# ----------- Qui suis-je----------- #}
 			<div class="row" id="QuiSuisJe">
 				<div class="col ps-5 mt-5 text-start">
 					<h3>Qui suis-je</h3>
 					<p>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry...
+						Moi, c'est Julia
+						<span class="emoji">💫</span>
+						! L'organisation est ma passion. J'aime structurer et simplifier
+																																																																																																																																																																																																												                pour alléger votre charge de travail. Rigoureuse, discrète et à l'écoute, je m'investis
+																																																																																																																																																																																																												                pour comprendre vos défis et y apporter des solutions concrètes. Votre succès est ma
+																																																																																																																																																																																																												                priorité, et je vise un service impeccable pour que l'administratif devienne un
+																																																																																																																																																																																																												                véritable atout pour vous.
 					</p>
-					<button type="button" class="rounded-pill">Lire plus</button>
+					<p>
+						Prêt(e) pour une gestion plus fluide ?
+					</p>
+
 				</div>
 				<div class="col">
 					<img src="{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}" class="img-fluid w-100 object-fit-cover" alt="Comptabilité entrepreneuriale - Femme afro-américaine">
@@ -69,25 +84,60 @@
 
 		{# ----------- Services ----------- #}
 		<div class="container mt-5" id="Services">
-			<h4 class="text-center">Nos Services</h4>
-			<div class="row justify-content-center row-cols-1 row-cols-md-2 g-4 mt-4">
-				{% for i in 1..6 %}
-					<div class="col d-flex justify-content-center">
-						<div class="border p-3 rounded h-100" style="max-width: 400px;">
-							<h5 class="text-center">Service
-								{{ i }}</h5>
-							<p class="text-center">Description du service numéro
-								{{ i }}...</p>
-						</div>
+			<h4 class="text-center">Nos Services 💫</h4>
+			<div
+				class="row justify-content-center row-cols-1 row-cols-md-2 g-4 mt-4">
+
+				<!-- Service 1 -->
+				<div class="col d-flex justify-content-center">
+					<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
+
+						<i class="bi bi-calendar-check text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
+						{/* Icône */}
+						<h5 class="text-center">Gestion d'Agenda et Rendez-vous</h5>
+						<p class="text-center">Optimisez votre temps ! Je planifie vos rendez-vous, gère vos calendriers et assure les rappels importants.</p>
 					</div>
-				{% endfor %}
+				</div>
+
+				<!-- Service 2 -->
+				<div class="col d-flex justify-content-center">
+					<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
+
+						<i class="bi bi-file-earmark-text text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
+						{/* Icône */}
+						<h5 class="text-center">Rédaction et Mise en Forme</h5>
+						<p class="text-center">Courriers, rapports, présentations... Je crée et mets en page vos documents professionnels avec soin.</p>
+					</div>
+				</div>
+
+				<!-- Service 3 -->
+				<div class="col d-flex justify-content-center">
+					<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
+
+						<i class="bi bi-envelope-paper text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
+						{/* Icône */}
+						<h5 class="text-center">Gestion E-mails & Communication</h5>
+						<p class="text-center">Ne soyez plus submergé(e) ! Je trie, réponds et organise vos e-mails pour une communication fluide.</p>
+					</div>
+				</div>
+
+				<!-- Service 4 -->
+				<div class="col d-flex justify-content-center">
+					<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
+
+						<i class="bi bi-receipt text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
+						{/* Icône */}
+						<h5 class="text-center">Suivi Facturation & Relances</h5>
+						<p class="text-center">Assurez une trésorerie saine : préparation de factures, suivi des paiements et relances clients.</p>
+					</div>
+				</div>
+
 			</div>
 			<div class="d-flex justify-content-center mt-4">
-				<a href="http://127.0.0.1:8000/contact" class="btn btn-primary m-2">Contact</a>
+				<a href="http://127.0.0.1:8000/contact" class="btn btn-primary m-2">Contactez-moi</a>
 				<a href="http://127.0.0.1:8000/contact" class="btn btn-outline-primary m-2">Demander un devis</a>
 			</div>
 		</div>
-
 		{# ----------- Tarifs ----------- #}
 		<div class="container mt-5 mb-5" id="Tarifs">
 			<div class="row mb-4 text-center">
@@ -123,57 +173,158 @@
 			</div>
 		</div>
 
-		{# ----------- Newsletter / Call to Action ----------- #}
-		<section class="cta-section position-relative text-white py-5" style="background-image: url('{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}'); background-size: cover; background-position: center;">
-			<div class="container text-center">
-				<h2 class="fw-bold">Rejoignez notre newsletter</h2>
-				<p>Recevez nos conseils et actualités pour gérer vos papiers en toute sérénité.</p>
-				<form class="row justify-content-center mt-3">
-					<div class="col-md-6">
-						<input type="email" class="form-control rounded-pill" placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail">
-					</div>
-					<div class="col-md-2 mt-2 mt-md-0">
-						<button type="submit" class="btn btn-light rounded-pill w-100">S’inscrire</button>
-					</div>
-				</form>
-			</div>
-		</section>
-
-		{# ----------- Blog ----------- #}
-		<div class="container mt-5 mb-5" id="Blog">
-			<h4 class="text-center mb-4">Derniers articles</h4>
-			<div class="row row-cols-1 row-cols-md-3 g-4">
-				{% for article_blog in articles %}
-					<div class="col d-flex">
-						<div class="card shadow-sm h-100 w-100">
-							{% if article_blog.imageAsBase64 %}
-								{# Use the new method #}
-								{# 
-																																																																																                           Ideally, you would also store and use the MIME type.
-																																																																																                           For example, if you had article_blog.imageMimeType:
-																																																																																                           <img src="data:{{ article_blog.imageMimeType }};base64,{{ article_blog.imageAsBase64 }}" class="card-img-top" alt="{{ article_blog.title }}">
-																																																																																                           
-																																																																																                           For now, assuming JPEG/PNG as in your original code:
-																																																																																                        #}
-								<img src="data:image/jpeg;base64,{{ article_blog.imageAsBase64 }}" class="card-img-top" alt="{{ article_blog.title|default('Article Image') }}">
-							{% else %}
-								{# Make sure this path is correct and the asset exists #}
-								<img src="{{ asset('images/default-article.png') }}" class="card-img-top" alt="Image par défaut">
-							{% endif %}
-							<div
-								class="card-body d-flex flex-column">
-								{# Assuming your entity properties are title and subTitle #}
-								<h5 class="card-title">{{ article_blog.title }}</h5>
-								<p class="card-text">{{ article_blog.subTitle }}</p>
-								<a href="{{ path('blog_show', {'id': article_blog.id}) }}" class="btn btn-outline-primary mt-auto rounded-pill">Lire l'article</a>
+		{# ----------- temoignage ----------- #}
+		<div class="container py-5">
+			<h2 class="text-center mb-5">Témoignages</h2>
+			<div class="overflow-hidden">
+				<div
+					class="d-flex flex-nowrap animate-scroll">
+					<!-- Témoignage 1 -->
+					<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem; transition: background-color 0.3s ease;">
+						<div class="card-body">
+							<div class="d-flex align-items-center mb-3">
+								<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
+								<div>
+									<h5 class="mb-0">MagicForm</h5>
+									<small class="text-muted">Vincennes</small>
+								</div>
 							</div>
+							<p class="card-text">
+								Marion a su apporter à mes projets la touche créative que j’attendais.
+								<strong>Design : graphique, épuré et moderne.</strong>
+								Tout ça souvent dans des délais très serrés.
+																																																            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
+							</p>
 						</div>
 					</div>
-				{% else %}
-					<p class="text-center">Aucun article disponible.</p>
-				{% endfor %}
+
+					<!-- Témoignage 2 -->
+					<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem; transition: background-color 0.3s ease;">
+						<div class="card-body">
+							<div class="d-flex align-items-center mb-3">
+								<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
+								<div>
+									<h5 class="mb-0">Fanny Goupy</h5>
+									<small class="text-muted">Agent Immobilier à Paris</small>
+								</div>
+							</div>
+							<p class="card-text">
+								Une professionnelle très
+								<strong>disponible et réactive</strong>. Je lui ai confié la reprise de mon logo, mon dépliant commercial
+																																																						            et mes cartes de visites. Ses propositions étaient toutes très intéressantes.
+								<strong>Le résultat est juste parfait</strong>.
+																																																						            Je recommande à 100% !
+							</p>
+						</div>
+					</div>
+
+					<!-- Témoignage 3 -->
+					<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem; transition: background-color 0.3s ease;">
+						<div class="card-body">
+							<div class="d-flex align-items-center mb-3">
+								<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
+								<div>
+									<h5 class="mb-0">Fanny Goupy</h5>
+									<small class="text-muted">Agent Immobilier à Paris</small>
+								</div>
+							</div>
+							<p class="card-text">
+								Une professionnelle très
+								<strong>au top
+								</strong>test</p>
+						</strong>.
+												Je recommande à 100% !
+					</p>
+				</div>
+			</div>
+
+			<!-- Duplicate cards for infinite loop -->
+			<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem;">
+				<div class="card-body">
+					<div class="d-flex align-items-center mb-3">
+						<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
+						<div>
+							<h5 class="mb-0">MagicForm</h5>
+							<small class="text-muted">Vincennes</small>
+						</div>
+					</div>
+					<p class="card-text">
+						Marion a su apporter à mes projets la touche créative que j’attendais.
+						<strong>Design : graphique, épuré et moderne.</strong>
+						Tout ça souvent dans des délais très serrés.
+																																						            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
+					</p>
+				</div>
 			</div>
 		</div>
-		{# The extra </div> tag you mentioned was not present in the snippet you provided to correct, 
-																				   but if it was there before this block, ensure your HTML structure is valid. #}
-	{% endblock %}
+	</div>
+</div>
+
+<style>
+	@keyframes scroll {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+
+	.animate-scroll {
+		animation: scroll 30s linear infinite;
+	}
+
+	.card:hover {
+		background-color: #6f42c1;
+		color: white;
+	}
+
+	.card:hover strong {
+		color: white;
+	}
+</style>
+
+
+{# ----------- Newsletter / Call to Action ----------- #}
+<section class="cta-section position-relative text-white py-5" style="background-image: url('{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}'); background-size: cover; background-position: center;">
+	<div class="container text-center">
+		<h2 class="fw-bold">Rejoignez notre newsletter</h2>
+		<p>Recevez nos conseils et actualités pour gérer vos papiers en toute sérénité.</p>
+		<form class="row justify-content-center mt-3">
+			<div class="col-md-6">
+				<input type="email" class="form-control rounded-pill" placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail">
+			</div>
+			<div class="col-md-2 mt-2 mt-md-0">
+				<button type="submit" class="btn btn-light rounded-pill w-100">S’inscrire</button>
+			</div>
+		</form>
+	</div>
+</section>
+
+{# ----------- Blog ----------- #}
+<div class="container mt-5 mb-5" id="Blog">
+	<h4 class="text-center mb-4">Derniers articles</h4>
+	<div class="row row-cols-1 row-cols-md-3 g-4">
+		{% for article_blog in articles|slice(-3) %}
+			<div class="col d-flex">
+				<div class="card shadow-sm h-100 w-100">
+					{% if article_blog.imageAsBase64 %}
+						<img src="data:image/jpeg;base64,{{ article_blog.imageAsBase64 }}" class="card-img-top blog-card-img-custom-height" alt="{{ article_blog.title|default('Article Image') }}">
+					{% else %}
+						{# Make sure this path is correct and the asset exists #}
+						<img src="{{ asset('images/default-article.png') }}" class="card-img-top blog-card-img-custom-height" alt="Image par défaut">
+					{% endif %}
+					<div
+						class="card-body d-flex flex-column">
+						{# Assuming your entity properties are title and subTitle #}
+						<h5 class="card-title">{{ article_blog.title }}</h5>
+						<p class="card-text">{{ article_blog.subTitle }}</p>
+						<a href="{{ path('blog_show', {'id': article_blog.id}) }}" class="btn btn-outline-primary mt-auto rounded-pill">Lire l'article</a>
+					</div>
+				</div>
+			</div>
+		{% else %}
+			<p class="text-center">Aucun article disponible.</p>
+		{% endfor %}
+	</div>
+</div>{% endblock %}
