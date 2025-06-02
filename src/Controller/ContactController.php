@@ -23,7 +23,7 @@ class ContactController extends AbstractController
 
         $email = (new Email())
             ->from($data->get('email'))
-            ->to('[mail client pro]') // Remplace par l'email de ta cliente
+            ->to('nonamespirit@gmail.com') // attention Remplacement email cliente
             ->subject('New Contact Request from ' . $data->get('first_name') . ' ' . $data->get('last_name'))
             ->text(sprintf(
                 "Name: %s %s\nEmail: %s\nPhone: %s\n\nComments:\n%s\n\nServices selected:\n%s",

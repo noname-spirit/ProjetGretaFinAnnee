@@ -8,8 +8,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud; // <<< THIS WAS THE MISSING PIE
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-// We are not using ImageField if displaying BLOB via custom template, so it can be removed if not used elsewhere
-// use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField; 
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field; // For generic fields / custom templates / FileType

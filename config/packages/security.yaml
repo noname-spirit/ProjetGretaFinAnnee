@@ -8,7 +8,9 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: email  # à adapter si tu n'utilises pas l'email comme identifiant
+                property: username  # à adapter si tu n'utilises pas l'email comme identifiant
+        # used to reload user from session & other features (e.g. switch_user)
+        # used to reload user from session & other features (e.g. switch_user)
 
     # Pare-feux (firewalls)
     firewalls:
@@ -19,20 +21,26 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            custom_authenticator: App\Security\AppAuthenticator
+            # custom_authenticator: App\Security\AppAuthenticator
 
             logout:
                 path: app_logout
                 target: login
 
-            remember_me:
+        
+            form_login:
+                login_path: app_login
+                check_path: app_login
+
+
+            remember_me: 
                 secret: '%kernel.secret%'
                 lifetime: 604800
                 path: /
 
     # Contrôle d'accès
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
