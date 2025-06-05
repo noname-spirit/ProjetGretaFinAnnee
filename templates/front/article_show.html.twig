@@ -12,12 +12,13 @@
 			{{ article.createdAt|date('d/m/Y') }}</p>
 
 		{# Affichage de l'image de l'article #}
-		<div class="text-center mb-4">
-			{% if article.imageAsBase64 %}
-				<img src="data:image/jpeg;base64,{{ article.imageAsBase64 }}" class="img-fluid" alt="{{ article.title }}">
-			{% else %}
-				<img src="{{ asset('images/default-article.png') }}" class="img-fluid" alt="Aucune image">
-			{% endif %}
+		<div class="text-center mb-4">{# {% if article.imageAsBase64 %} #}
+			{# <img #}
+			{# src="data:image/jpeg;base64,{{ article.imageAsBase64 }}" class="img-fluid" alt="{{ article.title }}"> #}
+			{# {% else %} #}
+			{# <img #}
+			{# src="{{ asset('images/default-article.png') }}" class="img-fluid" alt="Aucune image"> #}
+			{# {% endif %} #}
 		</div>
 
 		{# Contenu de l'article #}

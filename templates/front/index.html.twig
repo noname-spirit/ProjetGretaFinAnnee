@@ -5,357 +5,567 @@
 
 {% block body %}
 	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
+		/* Styles pour le survol et améliorations */
+		.zoom-hover {
+			transition: transform 0.3s ease-in-out;
 		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
+		.zoom-hover:hover {
+			transform: scale(1.05);
+		}
+
+		.icon-zoom-hover {
+			transition: transform 0.2s ease-in-out;
+			display: inline-block;
+		}
+		.icon-zoom-hover:hover {
+			transform: scale(1.2);
+		}
+
+		.card-zoom-hover {
+			transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+		}
+		.card-zoom-hover:hover {
+			transform: translateY(-5px) scale(1.03);
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+		}
+
+		.testimonial-card-hover {
+			transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+		}
+		.testimonial-card-hover:hover {
+			background-color: #6f42c1; /* Couleur violette (adaptez si besoin) */
+			color: white;
+			transform: scale(1.02);
+		}
+		.testimonial-card-hover:hover strong,
+		.testimonial-card-hover:hover .text-muted {
+			/* Assure la lisibilité des textes au survol */
+			color: white !important;
+		}
+		.testimonial-card-hover:hover .text-muted {
+			opacity: 0.8; /* Légère transparence pour le texte muted */
+		}
+
+		/* Animation de défilement pour les témoignages */
+		@keyframes scroll {
+			0% {
+				transform: translateX(0);
+			}
+			100% {
+				transform: translateX(-50%); /* Assurez-vous que cela correspond à la largeur de vos éléments dupliqués */
+			}
+		}
+		.animate-scroll {
+			animation: scroll 40s linear infinite;
+		}
+		.animate-scroll:hover {
+			animation-play-state: paused;
+		}
+
+		.blog-card-img-custom-height {
+			height: 200px;
+			object-fit: cover;
+		}
+
+		/* Animations pour l'apparition des éléments */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.animate-on-load {
+			opacity: 0; /* Commence invisible */
+			animation-fill-mode: forwards; /* Garde l'état final de l'animation */
+		}
+
+		.animate-fade-in-up {
+			animation-name: fadeInUp;
+			animation-duration: 0.8s; /* Durée de l'animation */
+			animation-timing-function: ease-out;
+		}
+
+		/* Délais spécifiques pour un effet d'arrivée échelonnée */
+		.delay-1 {
+			animation-delay: 0.2s;
+		}
+		.delay-2 {
+			animation-delay: 0.4s;
+		}
+		.delay-3 {
+			animation-delay: 0.6s;
+		}
+		.delay-4 {
+			animation-delay: 0.8s;
+		}
+
+		/* Animation pour le bouton */
+		.btn-grow-on-hover {
+			transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+		}
+
+		.btn-grow-on-hover:hover {
+			transform: scale(1.05); /* Grossit légèrement */
+			box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Ajoute une ombre pour plus d'effet */
+		}
+
+		/* Pour s'assurer que l'image ne déborde pas et garde ses proportions */
+		.img-responsive-custom {
+			max-height: 500px; /* Ou une hauteur qui vous convient */
+			width: 100%;
+			object-fit: cover; /* 'cover' est bien, 'contain' si vous voulez voir toute l'image */
+		}
+
+		/* Ajustements pour petits écrans */
+		@media(max-width: 991.98px) {
+			/* En dessous de 'lg' */
+			.text-lg-start-only {
+				/* Classe pour forcer l'alignement au centre sur mobile */
+				text-align: center !important;
+			}
+			#APropos .row > div,
+			#QuiSuisJe .row > div {
+				margin-bottom: 1.5rem; /* Espace entre image et texte quand ils s'empilent */
+			}
+			.img-responsive-custom {
+				max-height: 350px; /* Hauteur réduite pour mobile */
+			}
 		}
 	</style>
 
 	<div>
+		{# ----------- Hero Section ----------- #}
 		<div class="position-relative">
 			<img src="{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}" class="img-fluid w-100 vh-100 object-fit-cover" alt="Comptabilité entrepreneuriale - Femme afro-américaine">
 
-			<div class="container position-absolute top-50 start-50 translate-middle text-white text-center">
+			<div class="container position-absolute top-50 start-50 translate-middle text-white text-center" data-aos="fade-up" data-aos-delay="200">
 				<h1 class="fw-bold">
 					Simplifiez votre vie administrative<br>avec Class Papiers
 				</h1>
-				<p class="mt-3">
+				<p
+					class="mt-3 fs-5">
+					{# Taille de police augmentée pour meilleure lisibilité #}
 					Confiez-nous vos tracas administratifs et retrouvez la tranquillité d’esprit.<br>
 					Chez Class Papiers, nous sommes là pour vous aider à gérer<br>
 					vos documents et démarches en toute simplicité.
 				</p>
 
-				<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-arrow-down-circle" viewbox="0 0 16 16">
-					<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-				</svg>
+				<a
+					href="#APropos" class="icon-zoom-hover d-inline-block mt-4">
+					{# Lien vers la section APropos #}
+					<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-arrow-down-circle" viewbox="0 0 16 16">
+						<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+					</svg>
+				</a>
 			</div>
 		</div>
 
 		<div></div>
 		{# ----------- À propos ----------- #}
-		<div class="text-center" id="APropos">
-			<div class="row">
-				<div class="col">
-					<img src="{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}" class="img-fluid w-100 object-fit-cover" alt="Comptabilité entrepreneuriale - Femme afro-américaine">
+		{# ----------- À propos ----------- #}
+		<div
+			id="APropos" class="container py-5">
+			{# Ajout d'un container pour un meilleur layout Bootstrap et padding vertical #}
+			<div class="row align-items-center">
+				<div class="col-lg-6 mb-4 mb-lg-0">
+					<img src="{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}" class="img-fluid img-responsive-custom animate-on-load animate-fade-in-up delay-1" alt="Comptabilité entrepreneuriale - Femme afro-américaine">
 				</div>
-				<div class="col pr-5 mt-5 text-start">
-					<h3>À propos</h3>
-					<p>
+				<div
+					class="col-lg-6 ps-lg-5 text-lg-start-only">
+					{# Padding start sur grand écran, texte centré sur mobile/tablette puis à gauche #}
+					<h3 class="animate-on-load animate-fade-in-up delay-2">À propos</h3>
+					<p class="animate-on-load animate-fade-in-up delay-3">
 						Avec Julia
 						<span class="emoji">💫</span>
 						Secrétaire Administrative, gagnez en sérénité ! Je vous offre un soutien
-																																																																																																																																																																																																																																																																																																sur mesure pour gérer votre administratif (planning, documents, démarches...) et vous
-																																																																																																																																																																																																																																																																																																libérer du temps précieux. Concentrez-vous sur votre cœur de métier, que vous soyez
-																																																																																																																																																																																																																																																																																																entrepreneur, artisan, profession libérale ou PME. Ma mission : apporter clarté
-																																																																																																																																																																																																																																																																																																et efficacité à votre gestion quotidienne.
+																																																												                sur mesure pour gérer votre administratif (planning, documents, démarches...) et vous
+																																																												                libérer du temps précieux. Concentrez-vous sur votre cœur de métier, que vous soyez
+																																																												                entrepreneur, artisan, profession libérale ou PME. Ma mission : apporter clarté
+																																																												                et efficacité à votre gestion quotidienne.
 					</p>
-					<a href="http://127.0.0.1:8000/#Services" class="btn btn-outline-primary m-2">Voir plus</a>
+					<a href="http://127.0.0.1:8000/#Services" class="btn btn-outline-primary m-2 btn-grow-on-hover animate-on-load animate-fade-in-up delay-4">Voir plus</a>
 				</div>
 			</div>
-			{# ----------- Qui suis-je----------- #}
-			<div class="row" id="QuiSuisJe">
-				<div class="col ps-5 mt-5 text-start">
-					<h3>Qui suis-je</h3>
-					<p>
+		</div>
+
+		{# ----------- Qui suis-je ----------- #}
+		<div
+			id="QuiSuisJe" class="container py-5">
+			{# Ajout d'un container et padding vertical #}
+			<div class="row align-items-center">
+				<div
+					class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+					{# Image à droite sur grand écran (order-lg-2) #}
+					<img src="{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}" class="img-fluid img-responsive-custom animate-on-load animate-fade-in-up delay-1" alt="Comptabilité entrepreneuriale - Femme afro-américaine">
+				</div>
+				<div
+					class="col-lg-6 order-lg-1 pe-lg-5 text-lg-start-only">
+					{# Texte à gauche sur grand écran, padding end, texte centré sur mobile/tablette puis à gauche #}
+					<h3 class="animate-on-load animate-fade-in-up delay-2">Qui suis-je</h3>
+					<p class="animate-on-load animate-fade-in-up delay-3">
 						Moi, c'est Julia
 						<span class="emoji">💫</span>
 						! L'organisation est ma passion. J'aime structurer et simplifier
-																																																																																																																																													  pour alléger votre charge de travail. Rigoureuse, discrète et à l'écoute, je m'investis
-																																																																																																																																												   pour comprendre vos défis et y apporter des solutions concrètes. Votre succès est ma
-																																																																																																																																												   priorité, et je vise un service impeccable pour que l'administratif devienne un
-																																																																																																																																												  véritable atout pour vous.
+																																																												                pour alléger votre charge de travail. Rigoureuse, discrète et à l'écoute, je m'investis
+																																																												                pour comprendre vos défis et y apporter des solutions concrètes. Votre succès est ma
+																																																												                priorité, et je vise un service impeccable pour que l'administratif devienne un
+																																																												                véritable atout pour vous.
 					</p>
-					<p>
+					<p class="animate-on-load animate-fade-in-up delay-4">
 						Prêt(e) pour une gestion plus fluide ?
 					</p>
-
-				</div>
-				<div class="col">
-					<img src="{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}" class="img-fluid w-100 object-fit-cover" alt="Comptabilité entrepreneuriale - Femme afro-américaine">
 				</div>
 			</div>
 		</div>
 
-		{# ----------- Services ----------- #}
-		<div class="container mt-5" id="Services">
-			<h4 class="text-center">Nos Services 💫</h4>
+	</section>
+
+	{# ----------- Services ----------- #}
+	<div class="container mt-5" id="Services">
+		<h4 class="text-center">Nos Services 💫</h4>
+		<div
+			class="row justify-content-center row-cols-1 row-cols-md-2 g-4 mt-4">
+
+			<!-- Service 1 -->
+			<div class="col d-flex justify-content-center">
+				<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
+
+					<i class="bi bi-calendar-check text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
+					<img src="img/2x/logo_4.png" alt="" width="20%" class="mb-3">
+					<h5 class="text-center">Gestion d'Agenda et Rendez-vous</h5>
+					<p class="text-center">Optimisez votre temps ! Je planifie vos rendez-vous, gère vos calendriers et assure les rappels importants.</p>
+				</div>
+			</div>
+
+			<!-- Service 2 -->
+			<div class="col d-flex justify-content-center">
+				<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
+
+					<i class="bi bi-file-earmark-text text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
+					<img src="img/2x/logo_3.png" alt="" width="20%" class="mb-3">
+					<h5 class=" text-center">Rédaction et Mise en Forme</h5>
+					<p class="text-center">Courriers, rapports, présentations... Je crée et mets en page vos documents professionnels avec soin.</p>
+				</div>
+			</div>
+
+			<!-- Service 3 -->
+			<div class="col d-flex justify-content-center">
+				<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
+
+					<i class="bi bi-envelope-paper text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
+					<img src="img/2x/logo_2.png" alt="" width="20%" class="mb-3">
+					<h5 class=" text-center">Gestion E-mails & Communication</h5>
+					<p class="text-center">Ne soyez plus submergé(e) ! Je trie, réponds et organise vos e-mails pour une communication fluide.</p>
+				</div>
+			</div>
+
+			<!-- Service 4 -->
+			<div class="col d-flex justify-content-center">
+				<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
+
+					<i class="bi bi-receipt text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
+					<img src="img/2x/logo_1.png" alt="" width="20%" class="mb-3">
+					<h5 class=" text-center">Suivi Facturation & Relances</h5>
+					<p class="text-center">Assurez une trésorerie saine : préparation de factures, suivi des paiements et relances clients.</p>
+				</div>
+			</div>
+
+		</div>
+		<div class="d-flex justify-content-center mt-4">
+			<a href="http://127.0.0.1:8000/contact" class="btn btn-primary m-2">Contactez-moi</a>
+			<a href="http://127.0.0.1:8000/contact" class="btn btn-outline-primary m-2">Demander un devis</a>
+		</div>
+	</div>
+	{# ----------- Tarifs ----------- #}
+	<div class="container mt-5 mb-5" id="Tarifs">
+		<div class="row mb-4 text-center">
+			<h2 class="fs-2 fw-bold">LE MEILLEUR PLAN QUE NOUS PROPOSONS</h2>
+		</div>
+
+		<!-- Toggle Mensuel/Annuel -->
+		<div class="row justify-content-center mb-4">
+			<div class="col-auto">
+				<div class="form-check form-switch">
+					<input class="form-check-input" type="checkbox" role="switch" id="pricingToggle">
+					<label class="form-check-label" for="pricingToggle">
+						<span id="toggleLabel">Passer au tarif Annuel (Économisez ~15%)</span>
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center g-4">
+			{% set plans = [
+            {'title': 'Essentielle',
+             'price_monthly': '250€',
+             'price_annual': '2550€',
+             'features': ['Gestion des e-mails', 'Rendez-vous', 'Suivi administratif', 'Classement numérique']},
+            {'title': 'Avancé',
+             'price_monthly': '390€',
+             'price_annual': '3978€',
+             'features': ['Tout du plan Essentielle', 'Relances', 'Préparation comptable', 'Tableaux de bord']},
+            {'title': 'Premium',
+             'price_monthly': '590€',
+             'price_annual': '6018€',
+             'features': ['Tout du plan Avancé', 'Interface client', 'Reporting mensuel', 'Urgences prioritaires']}
+        ] %}
+			{% for plan in plans %}
+				<div class="col-md-6 col-lg-4 d-flex justify-content-center">
+					<div class="card plan-card shadow-sm rounded-4 h-100" style="max-width: 400px;" data-price-monthly="{{ plan.price_monthly }}" data-price-annual="{{ plan.price_annual }}">
+						<div class="card-body d-flex flex-column p-4">
+							<h3 class="h5 fw-bold mb-3 text-uppercase text-center">{{ plan.title }}</h3>
+							<div class="mb-4 text-center">
+								<span class="h4 fw-bold plan-price">{{ plan.price_monthly }}</span>
+								<span class="text-muted plan-period">/ mois</span>
+							</div>
+							<ul class="list-unstyled mb-4">
+								{% for f in plan.features %}
+									<li>✔
+										{{ f }}</li>
+								{% endfor %}
+							</ul>
+							<a href="http://127.0.0.1:8000/contact" class="btn btn-outline-primary mt-auto rounded-pill">Contact</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<!-- Styles et Scripts (inchangés, à placer avant </body>) -->
+	<style>
+		/* Animation simple au survol */
+		.plan-card {
+			transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+		}
+
+		.plan-card:hover {
+			transform: translateY(-5px) scale(1.02); /* Léger décalage vers le haut et agrandissement */
+			box-shadow: 0 0.5rem 1rem rgba(var(--bs-primary-rgb), 0.25) !important; /* Ombre plus prononcée avec la couleur primaire */
+		}
+
+		/* Pour que le switch utilise la couleur primaire du site (si définie par Bootstrap) */
+		.form-switch .form-check-input:checked {
+			background-color: var(--bs-primary);
+			border-color: var(--bs-primary);
+		}
+	</style>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+const pricingToggle = document.getElementById('pricingToggle');
+const toggleLabel = document.getElementById('toggleLabel');
+const planCards = document.querySelectorAll('.plan-card');
+
+pricingToggle.addEventListener('change', function () {
+const isAnnual = this.checked; // true si coché (annuel), false sinon (mensuel)
+
+planCards.forEach(card => {
+const priceDisplay = card.querySelector('.plan-price');
+const periodDisplay = card.querySelector('.plan-period');
+
+const monthlyPrice = card.dataset.priceMonthly; // Récupère depuis data-price-monthly
+const annualPrice = card.dataset.priceAnnual; // Récupère depuis data-price-annual
+
+if (isAnnual) {
+priceDisplay.textContent = annualPrice;
+periodDisplay.textContent = '/ an';
+} else {
+priceDisplay.textContent = monthlyPrice;
+periodDisplay.textContent = '/ mois';
+}
+});
+
+if (isAnnual) {
+toggleLabel.textContent = 'Passer au tarif Mensuel';
+} else {
+toggleLabel.textContent = 'Passer au tarif Annuel (Économisez ~15%)';
+}
+});
+});
+	</script>
+	{# ----------- temoignage ----------- #}
+	<div class="container py-5">
+		<h2 class="text-center mb-5">Témoignages</h2>
+		<div class="overflow-hidden">
 			<div
-				class="row justify-content-center row-cols-1 row-cols-md-2 g-4 mt-4">
-
-				<!-- Service 1 -->
-				<div class="col d-flex justify-content-center">
-					<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
-
-						<i class="bi bi-calendar-check text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
-						<img src="img/2x/logo_4.png" alt="" width="20%" class="mb-3">
-						<h5 class="text-center">Gestion d'Agenda et Rendez-vous</h5>
-						<p class="text-center">Optimisez votre temps ! Je planifie vos rendez-vous, gère vos calendriers et assure les rappels importants.</p>
-					</div>
-				</div>
-
-				<!-- Service 2 -->
-				<div class="col d-flex justify-content-center">
-					<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
-
-						<i class="bi bi-file-earmark-text text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
-						<img src="img/2x/logo_3.png" alt="" width="20%" class="mb-3">
-						<h5 class=" text-center">Rédaction et Mise en Forme</h5>
-						<p class="text-center">Courriers, rapports, présentations... Je crée et mets en page vos documents professionnels avec soin.</p>
-					</div>
-				</div>
-
-				<!-- Service 3 -->
-				<div class="col d-flex justify-content-center">
-					<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
-
-						<i class="bi bi-envelope-paper text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
-						<img src="img/2x/logo_2.png" alt="" width="20%" class="mb-3">
-						<h5 class=" text-center">Gestion E-mails & Communication</h5>
-						<p class="text-center">Ne soyez plus submergé(e) ! Je trie, réponds et organise vos e-mails pour une communication fluide.</p>
-					</div>
-				</div>
-
-				<!-- Service 4 -->
-				<div class="col d-flex justify-content-center">
-					<div class="p-3 rounded h-100 text-center" style="max-width: 400px;">
-
-						<i class="bi bi-receipt text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem; display: block;"></i>
-						<img src="img/2x/logo_1.png" alt="" width="20%" class="mb-3">
-						<h5 class=" text-center">Suivi Facturation & Relances</h5>
-						<p class="text-center">Assurez une trésorerie saine : préparation de factures, suivi des paiements et relances clients.</p>
-					</div>
-				</div>
-
-			</div>
-			<div class="d-flex justify-content-center mt-4">
-				<a href="http://127.0.0.1:8000/contact" class="btn btn-primary m-2">Contactez-moi</a>
-				<a href="http://127.0.0.1:8000/contact" class="btn btn-outline-primary m-2">Demander un devis</a>
-			</div>
-		</div>{# ----------- Tarifs ----------- #}<div class="container mt-5 mb-5" id="Tarifs">
-			<div class="row mb-4 text-center">
-				<h2 class="fs-2 fw-bold">LE MEILLEUR PLAN QUE NOUS PROPOSONS</h2>
-			</div>
-
-			<div class="row justify-content-center g-4">
-				{% set plans = [
-                    {'title': 'Essentielle', 'price': '250€', 'features': ['Gestion des e-mails', 'Rendez-vous', 'Suivi administratif', 'Classement numérique']},
-                    {'title': 'Avancé', 'price': '390€', 'features': ['Tout du plan Essentielle', 'Relances', 'Préparation comptable', 'Tableaux de bord']},
-                    {'title': 'Premium', 'price': '590€', 'features': ['Tout du plan Avancé', 'Interface client', 'Reporting mensuel', 'Urgences prioritaires']}
-                ] %}
-				{% for plan in plans %}
-					<div class="col-md-6 col-lg-4 d-flex justify-content-center">
-						<div class="card shadow-sm rounded-4 h-100" style="max-width: 400px;">
-							<div class="card-body d-flex flex-column p-4">
-								<h3 class="h5 fw-bold mb-3 text-uppercase text-center">{{ plan.title }}</h3>
-								<div class="mb-4 text-center">
-									<span class="h4 fw-bold">{{ plan.price }}</span>
-									<span class="text-muted">/ mois</span>
-								</div>
-								<ul class="list-unstyled mb-4">
-									{% for f in plan.features %}
-										<li>✔
-											{{ f }}</li>
-									{% endfor %}
-								</ul>
-								<a href="http://127.0.0.1:8000/contact" class="btn btn-outline-primary mt-auto rounded-pill">Contact</a>
+				class="d-flex flex-nowrap animate-scroll">
+				<!-- Témoignage 1 -->
+				<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem; transition: background-color 0.3s ease;">
+					<div class="card-body">
+						<div class="d-flex align-items-center mb-3">
+							<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
+							<div>
+								<h5 class="mb-0">MagicForm</h5>
+								<small class="text-muted">Vincennes</small>
 							</div>
 						</div>
+						<p class="card-text">
+							Marion a su apporter à mes projets la touche créative que j’attendais.
+							<strong>Design : graphique, épuré et moderne.</strong>
+							Tout ça souvent dans des délais très serrés.
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
+						</p>
 					</div>
-				{% endfor %}
-			</div>
-		</div>{# ----------- temoignage ----------- #}<div class="container py-5">
-			<h2 class="text-center mb-5">Témoignages</h2>
-			<div class="overflow-hidden">
-				<div
-					class="d-flex flex-nowrap animate-scroll">
-					<!-- Témoignage 1 -->
-					<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem; transition: background-color 0.3s ease;">
-						<div class="card-body">
-							<div class="d-flex align-items-center mb-3">
-								<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
-								<div>
-									<h5 class="mb-0">MagicForm</h5>
-									<small class="text-muted">Vincennes</small>
-								</div>
-							</div>
-							<p class="card-text">
-								Marion a su apporter à mes projets la touche créative que j’attendais.
-								<strong>Design : graphique, épuré et moderne.</strong>
-								Tout ça souvent dans des délais très serrés.
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																											            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
-							</p>
-						</div>
-					</div>
-
-					<!-- Témoignage 2 -->
-					<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem; transition: background-color 0.3s ease;">
-						<div class="card-body">
-							<div class="d-flex align-items-center mb-3">
-								<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
-								<div>
-									<h5 class="mb-0">Fanny Goupy</h5>
-									<small class="text-muted">Agent Immobilier à Paris</small>
-								</div>
-							</div>
-							<p class="card-text">
-								Une professionnelle très
-								<strong>disponible et réactive</strong>. Je lui ai confié la reprise de mon logo, mon dépliant commercial
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					            et mes cartes de visites. Ses propositions étaient toutes très intéressantes.
-								<strong>Le résultat est juste parfait</strong>.
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					            Je recommande à 100% !
-							</p>
-						</div>
-					</div>
-
-					<!-- Témoignage 3 -->
-					<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem; transition: background-color 0.3s ease;">
-						<div class="card-body">
-							<div class="d-flex align-items-center mb-3">
-								<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
-								<div>
-									<h5 class="mb-0">Fanny Goupy</h5>
-									<small class="text-muted">Agent Immobilier à Paris</small>
-								</div>
-							</div>
-							<p class="card-text">
-								Une professionnelle très
-								<strong>au top
-								</strong>test</p>
-						</strong>.
-																																																																																																																																																																																																																																																																																																																															Je recommande à 100% !
-					</p>
 				</div>
-			</div>
 
-			<!-- Duplicate cards for infinite loop -->
-			<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem;">
-				<div class="card-body">
-					<div class="d-flex align-items-center mb-3">
-						<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
-						<div>
-							<h5 class="mb-0">MagicForm</h5>
-							<small class="text-muted">Vincennes</small>
+				<!-- Témoignage 2 -->
+				<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem; transition: background-color 0.3s ease;">
+					<div class="card-body">
+						<div class="d-flex align-items-center mb-3">
+							<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
+							<div>
+								<h5 class="mb-0">Fanny Goupy</h5>
+								<small class="text-muted">Agent Immobilier à Paris</small>
+							</div>
 						</div>
+						<p class="card-text">
+							Une professionnelle très
+							<strong>disponible et réactive</strong>. Je lui ai confié la reprise de mon logo, mon dépliant commercial
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				            et mes cartes de visites. Ses propositions étaient toutes très intéressantes.
+							<strong>Le résultat est juste parfait</strong>.
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				            Je recommande à 100% !
+						</p>
 					</div>
-					<p class="card-text">
-						Marion a su apporter à mes projets la touche créative que j’attendais.
-						<strong>Design : graphique, épuré et moderne.</strong>
-						Tout ça souvent dans des délais très serrés.
-																																																																																																																																																																																																																																																																																																																																																									            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
-					</p>
 				</div>
+
+				<!-- Témoignage 3 -->
+				<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem; transition: background-color 0.3s ease;">
+					<div class="card-body">
+						<div class="d-flex align-items-center mb-3">
+							<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
+							<div>
+								<h5 class="mb-0">Fanny Goupy</h5>
+								<small class="text-muted">Agent Immobilier à Paris</small>
+							</div>
+						</div>
+						<p class="card-text">
+							Une professionnelle très
+							<strong>au top
+							</strong>test</p>
+					</strong>.
+																																																																																																																																																																																																																																																																																																																																																																																																																																																												Je recommande à 100% !
+				</p>
 			</div>
+		</div>
+
+		<!-- Duplicate cards for infinite loop -->
+		<div class="card mx-2 flex-shrink-0 shadow-sm border-0" style="width: 20rem;">
+			<div class="card-body">
+				<div class="d-flex align-items-center mb-3">
+					<img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Avatar">
+					<div>
+						<h5 class="mb-0">MagicForm</h5>
+						<small class="text-muted">Vincennes</small>
+					</div>
+				</div>
+				<p class="card-text">
+					Marion a su apporter à mes projets la touche créative que j’attendais.
+					<strong>Design : graphique, épuré et moderne.</strong>
+					Tout ça souvent dans des délais très serrés.
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
+				</p>
+			</div>
+		</div>
+	</div>
+</div></div><style>
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-scroll {
+	animation: scroll 30s linear infinite;
+}
+
+.card:hover {
+	background-color: #6f42c1;
+	color: white;
+}
+
+.card:hover strong {
+	color: white;
+}</style>{# ----------- Newsletter / Call to Action ----------- #}<section class="cta-section position-relative text-white py-5" style="background-image: url('{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}'); background-size: cover; background-position: center;">
+
+<div class="container text-center">
+	<h2 class="fw-bold">Rejoignez notre newsletter</h2>
+	<p>Recevez nos conseils et actualités pour gérer vos papiers en toute sérénité.</p>
+	<div class="row justify-content-center mt-3">
+		<div class="col-md-6">
+			<button type="button" class="btn btn-light rounded-pill w-100" data-bs-toggle="modal" data-bs-target="#newsletterModal">
+				S’inscrire
+			</button>
 		</div>
 	</div>
 </div>
-<style>
-	@keyframes scroll {
-		0% {
-			transform: translateX(0);
-		}
-		100% {
-			transform: translateX(-50%);
-		}
-	}
 
-	.animate-scroll {
-		animation: scroll 30s linear infinite;
-	}
-
-	.card:hover {
-		background-color: #6f42c1;
-		color: white;
-	}
-
-	.card:hover strong {
-		color: white;
-	}
-</style>
-{# ----------- Newsletter / Call to Action ----------- #}
-<section class="cta-section position-relative text-white py-5" style="background-image: url('{{ asset('comptabilite-entrepreneuriale-femme-afro-americaine-ar-169-style-brut-id-emploi-f486981b168f4ae8914e28ea59_343960-107166.jpg') }}'); background-size: cover; background-position: center;">
-
-	<div class="container text-center">
-		<h2 class="fw-bold">Rejoignez notre newsletter</h2>
-		<p>Recevez nos conseils et actualités pour gérer vos papiers en toute sérénité.</p>
-		<div class="row justify-content-center mt-3">
-			<div class="col-md-6">
-				<button type="button" class="btn btn-light rounded-pill w-100" data-bs-toggle="modal" data-bs-target="#newsletterModal">
-					S’inscrire
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- Modal -->
-	<div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<form method="post" action="{{ path('newsletter_register') }}">
-					<div class="modal-header">
-						<h5 class="modal-title" id="newsletterModalLabel">Inscription à la newsletter</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Modal -->
+<div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<form method="post" action="{{ path('newsletter_register') }}">
+				<div class="modal-header">
+					<h5 class="modal-title" id="newsletterModalLabel">Inscription à la newsletter</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-3 text-black">
+						<label for="nom" class="form-label">Nom</label>
+						<input type="text" class="form-control" id="nom" name="nom" required>
 					</div>
-					<div class="modal-body">
-						<div class="mb-3 text-black">
-							<label for="nom" class="form-label">Nom</label>
-							<input type="text" class="form-control" id="nom" name="nom" required>
-						</div>
-						<div class="mb-3 text-black">
-							<label for="prenom" class="form-label">Prénom</label>
-							<input type="text" class="form-control" id="prenom" name="prenom" required>
-						</div>
-						<div class="mb-3 text-black">
-							<label for="email" class="form-label">Email</label>
-							<input type="email" class="form-control" id="email" name="email" required>
-						</div>
-						<div class="mb-3 text-black">
-							<label for="activite" class="form-label">Activité</label>
-							<select class="form-select" id="activite" name="activite" required>
-								{% for activite in activites %}
-									<option value="{{ activite.id }}">{{ activite.nom }}</option>
-								{% endfor %}
-							</select>
-						</div>
+					<div class="mb-3 text-black">
+						<label for="prenom" class="form-label">Prénom</label>
+						<input type="text" class="form-control" id="prenom" name="prenom" required>
 					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary">S'inscrire</button>
+					<div class="mb-3 text-black">
+						<label for="email" class="form-label">Email</label>
+						<input type="email" class="form-control" id="email" name="email" required>
 					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</section>
-
-{# ----------- Blog ----------- #}
-<div class="container mt-5 mb-5" id="Blog">
-	<h4 class="text-center mb-4">Derniers articles</h4>
-	<div class="row row-cols-1 row-cols-md-3 g-4">
-		{% for article_blog in articles|slice(0, 3) %}
-			<div class="col d-flex">
-				<div class="card shadow-sm h-100 w-100">
-					{% if article_blog.imageAsBase64 %}
-						<img src="data:image/jpeg;base64,{{ article_blog.imageAsBase64 }}" class="card-img-top blog-card-img-custom-height" alt="{{ article_blog.title|default('Article Image') }}">
-					{% else %}
-						{# Make sure this path is correct and the asset exists #}
-						<img src="{{ asset('images/default-article.png') }}" class="card-img-top blog-card-img-custom-height" alt="Image par défaut">
-					{% endif %}
-					<div
-						class="card-body d-flex flex-column">
-						{# Assuming your entity properties are title and subTitle #}
-						<h5 class="card-title">{{ article_blog.title }}</h5>
-						<p class="card-text">{{ article_blog.subTitle }}</p>
-						<a href="{{ path('blog_show', {'id': article_blog.id}) }}" class="btn btn-outline-primary mt-auto rounded-pill">Lire l'article</a>
+					<div class="mb-3 text-black">
+						<label for="activite" class="form-label">Activité</label>
+						<select class="form-select" id="activite" name="activite" required>
+							{% for activite in activites %}
+								<option value="{{ activite.id }}">{{ activite.nom }}</option>
+							{% endfor %}
+						</select>
 					</div>
 				</div>
-			</div>
-		{% else %}
-			<p class="text-center">Aucun article disponible.</p>
-		{% endfor %}
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">S'inscrire</button>
+				</div>
+			</form>
+		</div>
 	</div>
-</div>{% endblock %}
+</div></section>{# ----------- Blog ----------- #}<div class="container mt-5 mb-5" id="Blog">
+<h4 class="text-center mb-4">Derniers articles</h4>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+	{% for article_blog in articles|slice(0, 3) %}
+		<div class="col d-flex">
+			<div class="card shadow-sm h-100 w-100">
+				{# {% if article_blog.imageAsBase64 %} #}
+				{# <img src="data:image/jpeg;base64,{{ article_blog.imageAsBase64 }}" class="card-img-top blog-card-img-custom-height" alt="{{ article_blog.title|default('Article Image') }}"> #}
+				{# {% else %} #}
+				{# Make sure this path is correct and the asset exists #}
+				{# <img src="{{ asset('images/default-article.png') }}" class="card-img-top blog-card-img-custom-height" alt="Image par défaut"> #}
+				{# {% endif %} #}
+					<div
+					class="card-body d-flex flex-column"> {# Assuming your entity properties are title and subTitle #}
+					<h5 class="card-title">{{ article_blog.title }}</h5>
+					<p class="card-text">{{ article_blog.subTitle }}</p>
+					<a href="{{ path('blog_show', {'id': article_blog.id}) }}" class="btn btn-outline-primary mt-auto rounded-pill">Lire l'article</a>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<p class="text-center">Aucun article disponible.</p>
+	{% endfor %}
+</div></div>{% endblock %}

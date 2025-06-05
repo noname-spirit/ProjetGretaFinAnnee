@@ -31,8 +31,8 @@ class ArticleBlog
      * It's populated from $imageFile (via processImageUpload in CRUD controller) when an image is uploaded.
      * Doctrine hydrates this as a resource from the database.
      */
-    #[ORM\Column(type: Types::BLOB, nullable: true)]
-    private mixed $image = null; // 'mixed' for PHP 8.0+ (resource from DB, string/resource when set)
+    // #[ORM\Column(type: Types::BLOB, nullable: true)]
+    // private mixed $image = null; // 'mixed' for PHP 8.0+ (resource from DB, string/resource when set)
 
     /**
      * This is NOT a mapped field, just a temporary property for the uploaded file.
@@ -98,6 +98,7 @@ class ArticleBlog
      */
     public function getImage(): ?string
     {
+        return null;
         if (is_resource($this->image)) {
             rewind($this->image); // Ensure stream pointer is at the beginning
             $content = stream_get_contents($this->image);
@@ -118,19 +119,19 @@ class ArticleBlog
      *
      * @param string|resource|null $image
      */
-    public function setImage(mixed $image): static
-    {
-        $this->image = $image;
-        return $this;
-    }
+    // public function setImage(mixed $image): static
+    // {
+    //     $this->image = $image;
+    //     return $this;
+    // }
 
     /**
      * Getter for the temporary uploaded file property used by forms.
      */
-    public function getImageFile(): ?UploadedFile
-    {
-        return $this->imageFile;
-    }
+    // public function getImageFile(): ?UploadedFile
+    // {
+    //     return $this->imageFile;
+    // }
 
     /**
      * Setter for the temporary uploaded file property used by forms.
@@ -154,14 +155,14 @@ class ArticleBlog
      * Helper method to get the image as a base64 encoded string,
      * suitable for embedding in <img> tags using data URIs.
      */
-    public function getImageAsBase64(): ?string
-    {
-        $imageData = $this->getImage(); // This handles resource-to-string or direct string
-        if ($imageData === null) {
-            return null;
-        }
-        return base64_encode($imageData);
-    }
+    // public function getImageAsBase64(): ?string
+    // {
+    //     $imageData = $this->getImage(); // This handles resource-to-string or direct string
+    //     if ($imageData === null) {
+    //         return null;
+    //     }
+    //     return base64_encode($imageData);
+    // }
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
