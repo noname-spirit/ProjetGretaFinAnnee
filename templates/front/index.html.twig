@@ -166,7 +166,7 @@
 		</div>
 
 		<div></div>
-		{# ----------- À propos ----------- #}
+
 		{# ----------- À propos ----------- #}
 		<div
 			id="APropos" class="container py-5">
@@ -183,10 +183,10 @@
 						Avec Julia
 						<span class="emoji">💫</span>
 						Secrétaire Administrative, gagnez en sérénité ! Je vous offre un soutien
-																																																												                sur mesure pour gérer votre administratif (planning, documents, démarches...) et vous
-																																																												                libérer du temps précieux. Concentrez-vous sur votre cœur de métier, que vous soyez
-																																																												                entrepreneur, artisan, profession libérale ou PME. Ma mission : apporter clarté
-																																																												                et efficacité à votre gestion quotidienne.
+																																																																																																																		                sur mesure pour gérer votre administratif (planning, documents, démarches...) et vous
+																																																																																																																		                libérer du temps précieux. Concentrez-vous sur votre cœur de métier, que vous soyez
+																																																																																																																		                entrepreneur, artisan, profession libérale ou PME. Ma mission : apporter clarté
+																																																																																																																		                et efficacité à votre gestion quotidienne.
 					</p>
 					<a href="http://127.0.0.1:8000/#Services" class="btn btn-outline-primary m-2 btn-grow-on-hover animate-on-load animate-fade-in-up delay-4">Voir plus</a>
 				</div>
@@ -211,10 +211,10 @@
 						Moi, c'est Julia
 						<span class="emoji">💫</span>
 						! L'organisation est ma passion. J'aime structurer et simplifier
-																																																												                pour alléger votre charge de travail. Rigoureuse, discrète et à l'écoute, je m'investis
-																																																												                pour comprendre vos défis et y apporter des solutions concrètes. Votre succès est ma
-																																																												                priorité, et je vise un service impeccable pour que l'administratif devienne un
-																																																												                véritable atout pour vous.
+																																																																																																																		                pour alléger votre charge de travail. Rigoureuse, discrète et à l'écoute, je m'investis
+																																																																																																																		                pour comprendre vos défis et y apporter des solutions concrètes. Votre succès est ma
+																																																																																																																		                priorité, et je vise un service impeccable pour que l'administratif devienne un
+																																																																																																																		                véritable atout pour vous.
 					</p>
 					<p class="animate-on-load animate-fade-in-up delay-4">
 						Prêt(e) pour une gestion plus fluide ?
@@ -356,39 +356,7 @@
 		}
 	</style>
 
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-const pricingToggle = document.getElementById('pricingToggle');
-const toggleLabel = document.getElementById('toggleLabel');
-const planCards = document.querySelectorAll('.plan-card');
 
-pricingToggle.addEventListener('change', function () {
-const isAnnual = this.checked; // true si coché (annuel), false sinon (mensuel)
-
-planCards.forEach(card => {
-const priceDisplay = card.querySelector('.plan-price');
-const periodDisplay = card.querySelector('.plan-period');
-
-const monthlyPrice = card.dataset.priceMonthly; // Récupère depuis data-price-monthly
-const annualPrice = card.dataset.priceAnnual; // Récupère depuis data-price-annual
-
-if (isAnnual) {
-priceDisplay.textContent = annualPrice;
-periodDisplay.textContent = '/ an';
-} else {
-priceDisplay.textContent = monthlyPrice;
-periodDisplay.textContent = '/ mois';
-}
-});
-
-if (isAnnual) {
-toggleLabel.textContent = 'Passer au tarif Mensuel';
-} else {
-toggleLabel.textContent = 'Passer au tarif Annuel (Économisez ~15%)';
-}
-});
-});
-	</script>
 	{# ----------- temoignage ----------- #}
 	<div class="container py-5">
 		<h2 class="text-center mb-5">Témoignages</h2>
@@ -409,7 +377,7 @@ toggleLabel.textContent = 'Passer au tarif Annuel (Économisez ~15%)';
 							Marion a su apporter à mes projets la touche créative que j’attendais.
 							<strong>Design : graphique, épuré et moderne.</strong>
 							Tout ça souvent dans des délais très serrés.
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
 						</p>
 					</div>
 				</div>
@@ -427,9 +395,9 @@ toggleLabel.textContent = 'Passer au tarif Annuel (Économisez ~15%)';
 						<p class="card-text">
 							Une professionnelle très
 							<strong>disponible et réactive</strong>. Je lui ai confié la reprise de mon logo, mon dépliant commercial
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				            et mes cartes de visites. Ses propositions étaient toutes très intéressantes.
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												            et mes cartes de visites. Ses propositions étaient toutes très intéressantes.
 							<strong>Le résultat est juste parfait</strong>.
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				            Je recommande à 100% !
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												            Je recommande à 100% !
 						</p>
 					</div>
 				</div>
@@ -449,7 +417,7 @@ toggleLabel.textContent = 'Passer au tarif Annuel (Économisez ~15%)';
 							<strong>au top
 							</strong>test</p>
 					</strong>.
-																																																																																																																																																																																																																																																																																																																																																																																																																																																												Je recommande à 100% !
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									Je recommande à 100% !
 				</p>
 			</div>
 		</div>
@@ -468,7 +436,7 @@ toggleLabel.textContent = 'Passer au tarif Annuel (Économisez ~15%)';
 					Marion a su apporter à mes projets la touche créative que j’attendais.
 					<strong>Design : graphique, épuré et moderne.</strong>
 					Tout ça souvent dans des délais très serrés.
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			            J’apprécie vraiment sa disponibilité. Bon suivi de projet de la création à l’impression. Je recommande !!!
 				</p>
 			</div>
 		</div>

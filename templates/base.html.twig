@@ -169,6 +169,41 @@ el.classList.add('is-visible');
 });
 		</script>
 
+		{# ______toogle script___________ #}
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+const pricingToggle = document.getElementById('pricingToggle');
+const toggleLabel = document.getElementById('toggleLabel');
+const planCards = document.querySelectorAll('.plan-card');
+
+pricingToggle.addEventListener('change', function () {
+const isAnnual = this.checked; // true si coché (annuel), false sinon (mensuel)
+
+planCards.forEach(card => {
+const priceDisplay = card.querySelector('.plan-price');
+const periodDisplay = card.querySelector('.plan-period');
+
+const monthlyPrice = card.dataset.priceMonthly; // Récupère depuis data-price-monthly
+const annualPrice = card.dataset.priceAnnual; // Récupère depuis data-price-annual
+
+if (isAnnual) {
+priceDisplay.textContent = annualPrice;
+periodDisplay.textContent = '/ an';
+} else {
+priceDisplay.textContent = monthlyPrice;
+periodDisplay.textContent = '/ mois';
+}
+});
+
+if (isAnnual) {
+toggleLabel.textContent = 'Passer au tarif Mensuel';
+} else {
+toggleLabel.textContent = 'Passer au tarif Annuel (Économisez ~15%)';
+}
+});
+});
+		</script>
+
 
 	</body>
 </html>
