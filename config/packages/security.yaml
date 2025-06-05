@@ -25,12 +25,13 @@ security:
 
             logout:
                 path: app_logout
-                target: login
+                target: '/'
 
         
             form_login:
                 login_path: app_login
                 check_path: app_login
+                default_target_path: admin
 
 
             remember_me: 

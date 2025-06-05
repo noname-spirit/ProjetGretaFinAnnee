@@ -36,17 +36,13 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('nom'),
-            TextField::new('prenom'),
-            EmailField::new('email')->hideOnIndex(),
-            TextField::new('motDePasse')
+
+            EmailField::new('username'),
+            TextField::new('password')
                 ->setFormType(PasswordType::class)
                 ->onlyOnForms()
                 ->setLabel('Mot de passe'),
-            AssociationField::new('role')
-                ->setLabel('Rôle')
-                ->setFormTypeOption('choice_label', 'name')
-                ->setRequired(true),
+
         ];
     }
 
@@ -54,7 +50,7 @@ class UserCrudController extends AbstractCrudController
     {
         if ($entityInstance instanceof User && $entityInstance->getPassword()) {
             $hashedPassword = $this->passwordHasher->hashPassword($entityInstance, $entityInstance->getPassword());
-            $entityInstance->setMotDePasse($hashedPassword);
+            $entityInstance->setPassword($hashedPassword);
         }
 
         parent::persistEntity($entityManager, $entityInstance);
@@ -64,7 +60,7 @@ class UserCrudController extends AbstractCrudController
     {
         if ($entityInstance instanceof User && $entityInstance->getPassword()) {
             $hashedPassword = $this->passwordHasher->hashPassword($entityInstance, $entityInstance->getPassword());
-            $entityInstance->setMotDePasse($hashedPassword);
+            $entityInstance->setPassword($hashedPassword);
         }
 
         parent::updateEntity($entityManager, $entityInstance);
