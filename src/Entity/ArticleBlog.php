@@ -11,6 +11,9 @@ use Symfony\Component\Validator\Constraints as Assert;   // For validation of $i
 #[ORM\Entity(repositoryClass: ArticleBlogRepository::class)]
 class ArticleBlog
 {
+
+    const IMAGE_PATH = '/uploads/articles';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]
@@ -111,6 +114,11 @@ class ArticleBlog
         }
 
         return null;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return self::IMAGE_PATH . '/' . this->image;
     }
 
     /**
