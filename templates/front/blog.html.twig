@@ -12,11 +12,11 @@
 			<div class="col-lg-12 mb-5">
 				<div class="card border-0 shadow-lg">
 					<div class="row g-0 align-items-center">
-						<div class="col-md-6">{# {% if latestArticle.imageAsBase64 %} #}
-							{# <img src="data:image/jpeg;base64,{{ latestArticle.imageAsBase64 }}" class="img-fluid rounded-start" alt="{{ latestArticle.title }}"> #}
-							{# {% else %} #}
-							{# <img src="/placeholder.jpg" class="img-fluid rounded-start" alt="Aucune image"> #}
-							{# {% endif %} #}
+						<div class="col-md-6">
+							{% if latestArticle.imagePath %}
+								<img src="{{ latestArticle.imagePath }}" alt="" width="10%">
+							{% endif %}
+
 						</div>
 						<div class="col-md-6 p-4">
 							<h2>{{ latestArticle.title }}</h2>
