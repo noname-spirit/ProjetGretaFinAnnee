@@ -10,6 +10,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CommentaireCrudController extends AbstractCrudController
 {
+
+
     public static function getEntityFqcn(): string
     {
         return Commentaire::class;

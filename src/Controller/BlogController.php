@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\ArticleBlog;
+use App\Form\CommentaireFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\NewLetterAbonneRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
@@ -59,12 +61,18 @@ class BlogController extends AbstractController
 
     #[Route('/blog/{id}', name: 'article_show', requirements: ['id' => '\d+'])]
     public function show(ArticleBlog $article): Response
+
     {
+
+        $commentaireform = $this->createForm(CommentaireFormType::class);
         return $this->render('front/article_show.html.twig', [
             'article' => $article,
             'encodedImage' => $this->encodeImage($article->getImage()),
+            'commentaireForm' => $commentaireform
         ]);
     }
+
+    
 
     private function encodeImage($stream): ?string
     {

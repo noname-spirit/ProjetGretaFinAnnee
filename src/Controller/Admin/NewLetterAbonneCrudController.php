@@ -22,7 +22,7 @@ class NewLetterAbonneCrudController extends AbstractCrudController
         return [
             TextField::new('nom'),
             TextField::new('prenom'),
-            EmailField::new('email')->hideOnIndex(),
+            EmailField::new('email'),
             AssociationField::new('activite')
                 ->setLabel('Activité')
                 ->setRequired(true),
