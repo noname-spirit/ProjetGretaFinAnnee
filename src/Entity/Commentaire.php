@@ -14,14 +14,19 @@ class Commentaire
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $userName = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $type = null;
+
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $author = null;
+
+    #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?ArticleBlog $article = null;
 
     public function getId(): ?int
     {
@@ -35,30 +40,6 @@ class Commentaire
         return $this;
     }
 
-    public function getUserName(): ?string
-    {
-        return $this->userName;
-    }
-
-    public function setUserName(string $userName): static
-    {
-        $this->userName = $userName;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): static
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
     public function getMessage(): ?string
     {
         return $this->message;
@@ -67,6 +48,30 @@ class Commentaire
     public function setMessage(string $message): static
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getArticle(): ?ArticleBlog
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?ArticleBlog $article): static
+    {
+        $this->article = $article;
 
         return $this;
     }

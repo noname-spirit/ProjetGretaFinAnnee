@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ArticleBlog;
+use App\Entity\Commentaire;
 use App\Form\CommentaireFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\NewLetterAbonneRepository;
@@ -63,8 +64,14 @@ class BlogController extends AbstractController
     public function show(ArticleBlog $article): Response
 
     {
+        $commentaire = new Commentaire();
+        $commentaire->setArticle($article);
 
-        $commentaireform = $this->createForm(CommentaireFormType::class);
+        $commentaireform = $this->createForm(CommentaireFormType::class, $commentaire, [
+            'action' => $this->generateUrl('app_commentaire_new'),
+            'method' => 'POST',
+        ]);
+
         return $this->render('front/article_show.html.twig', [
             'article' => $article,
             'encodedImage' => $this->encodeImage($article->getImage()),
@@ -72,7 +79,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    
+
 
     private function encodeImage($stream): ?string
     {
