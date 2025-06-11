@@ -6,41 +6,82 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container mt-5 mb-5">
-		<h1 class="mb-4 text-center">{{ article.title }}</h1>
+<div
+	class="container mt-5 mb-5">
+
+	{# Affichage de l'image de l'article #}
+	<div class="text-center mb-4">
+		{% if article.imagePath %}
+			<img src="{{ article.imagePath }}" alt="" width="10%">
+		{% endif %}
 		<p class="text-muted text-center">Publié le
 			{{ article.createdAt|date('d/m/Y') }}</p>
+		<h1 class="mb-4 text-center">{{ article.title }}</h1>
+		<h2>{{ article.subTitle }}</h2>
 
-		{# Affichage de l'image de l'article #}
-		<div class="text-center mb-4">
-			{% if article.imagePath %}
-				<img src="{{ article.imagePath }}" alt="" width="10%">
-			{% endif %}
-		</div>
-
-		{# Contenu de l'article #}
-		<div class="article-content mb-4">
-			{{ article.content|raw }}
-		</div>
-
-		{# Lien pour revenir à la liste des articles #}
-		<div class="text-center">
-			<a href="{{ path('blog_index') }}" class="btn btn-secondary mt-4">Retour à la liste des articles</a>
-		</div>
 	</div>
-	{# ---------- commentaire ----------- #}
-	{% if is_granted('ROLE_USER') %}
+
+	{# Contenu de l'article #}
+	<div class="article-content mb-2 text-center-justify w-75 mx-auto">
+
+		{# Utilisation de striptags pour éviter les balises HTML dans le titre #}
+
+		{# Utilisation de raw pour afficher le contenu HTML #}
+	{{ article.content|raw }}
+	</div>
+
+		<div class="text-center"> <a href="{{ path('blog_index') }}" class="btn btn-secondary mt-4">Retour à la liste des articles</a>
+	</div>
+</div>
+{# ---------- commentaire ----------- #}
+{% if is_granted('ROLE_USER') %}
 
 
-		<div class="container mt-5 mb-5 d-flex justify-content-center">
-			<div class="card shadow w-50">
-				<div class="card-body text-left">
-					<h5 class="card-title text-center">Laisser un commentaire</h5>
-					{{ form(commentaireForm) }}
+	<div class="container mt-5 mb-5 d-flex justify-content-center">
+		<div class="card shadow w-50">
+			<div class="card-body text-left">
+				<h5 class="card-title text-center">Laisser un commentaire</h5>
+				{{ form(commentaireForm) }}
 
+				</div>
+			</div>
+		</div>
+		{# ----------commentaire post ------- #}
+		<div
+			class="container mt-5 mb-5 d-flex justify-content-center">
+			{# Modifications ici : suppression de style="max-width: 700px;" et ajout de border-0 #}
+			<div class="card shadow w-100 border-0">
+				<div class="card-body">
+					<h5 class="card-title text-center mb-4">Commentaires</h5>
+
+					<div class="card-text">
+						{% if commentaires is not empty %}
+							{% for commentaire in commentaires %}
+								<div class="mb-3 text-start">
+									<p class="mb-1">
+										<strong>{{ commentaire.author.username }}</strong>
+										a dit :
+										{% if commentaire.createdAt is defined and commentaire.createdAt is not null %}
+											<small class="text-muted ms-2">
+												le
+												{{ commentaire.createdAt | date("d/m/Y à H:i") }}
+											</small>
+										{% endif %}
+									</p>
+									<p>
+										{{ commentaire.message | nl2br | raw }}
+									</p>
+								</div>
+								{% if not loop.last %}
+									<hr class="my-3">
+								{% endif %}
+							{% endfor %}
+						{% else %}
+							<p class="text-center text-muted">Aucun commentaire pour le moment.</p>
+						{% endif %}
 					</div>
 				</div>
 			</div>
-
-		{% endif %}
-	{% endblock %}
+		</div>
+	</div>
+</div></div></div></div></div></div></div>{% endif %}{% endblock %}

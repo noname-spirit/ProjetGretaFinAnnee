@@ -61,11 +61,12 @@ class BlogController extends AbstractController
     }
 
     #[Route('/blog/{id}', name: 'article_show', requirements: ['id' => '\d+'])]
-    public function show(ArticleBlog $article): Response
+    public function show(ArticleBlog $article, EntityManagerInterface $entityManager): Response
 
     {
         $commentaire = new Commentaire();
         $commentaire->setArticle($article);
+        $commentaires = $entityManager->getRepository(Commentaire::class)->findBy(['article' => $article]);
 
         $commentaireform = $this->createForm(CommentaireFormType::class, $commentaire, [
             'action' => $this->generateUrl('app_commentaire_new'),
@@ -75,7 +76,8 @@ class BlogController extends AbstractController
         return $this->render('front/article_show.html.twig', [
             'article' => $article,
             'encodedImage' => $this->encodeImage($article->getImage()),
-            'commentaireForm' => $commentaireform
+            'commentaireForm' => $commentaireform,
+            'commentaires' => $commentaires
         ]);
     }
 
