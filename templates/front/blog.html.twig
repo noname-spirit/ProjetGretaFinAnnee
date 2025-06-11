@@ -10,20 +10,49 @@
 		{# Article principal mis en avant #}
 		{% if latestArticle %}
 			<div class="col-lg-12 mb-5">
-				<div class="card border-0 shadow-lg">
-					<div class="row g-0 align-items-center">
-						<div class="col-md-6">
-							{% if latestArticle.imagePath %}
-								<img src="{{ latestArticle.imagePath }}" alt="" width="10%">
-							{% endif %}
+				<div class="card border-0 shadow-lg overflow-hidden">
+					<div class="row g-0">
 
+						<div class="col-md-5 col-lg-6">
+							{% if latestArticle.imagePath %}
+								<img src="{{ asset(latestArticle.imagePath) }}" alt="Image de couverture pour {{ latestArticle.title }}" class="img-fluid w-100 h-100 rounded-start" {# `rounded-start` pour arrondir les coins gauches uniquement #} style="object-fit: cover; object-position: center; min-height: 300px;" {# `object-fit` pour éviter la déformation, `h-100` pour remplir la hauteur du parent #}>
+							{% else %}
+								<div class="bg-light w-100 h-100 d-flex align-items-center justify-content-center rounded-start" style="min-height: 300px;">
+									<i class="bi bi-image text-muted" style="font-size: 4rem;"></i>
+									{# Nécessite Bootstrap Icons #}
+								</div>
+							{% endif %}
 						</div>
-						<div class="col-md-6 p-4">
-							<h2>{{ latestArticle.title }}</h2>
-							<p class="text-muted">{{ latestArticle.createdAt|date('d/m/Y') }}</p>
-							<p>{{ latestArticle.content[:200]|striptags }}...</p>
-							<a href="{{ path('article_show', {'id': latestArticle.id}) }}" class="btn btn-primary">Lire l'article</a>
+
+						{# Colonne pour le texte #}
+						<div
+							class="col-md-7 col-lg-6 d-flex flex-column">
+							{# `d-flex flex-column` pour pouvoir pousser le bouton en bas avec `mt-auto` #}
+							<div
+								class="card-body p-4 p-lg-5">
+								{# Plus de padding sur les grands écrans #}
+								<h3 class="card-title fw-bold mb-2 display-6">{{ latestArticle.title }}</h3>
+								<p class="text-muted small mb-3">
+									<i class="bi bi-calendar3 me-1"></i>
+									{# Nécessite Bootstrap Icons #}
+									Publié le
+									{{ latestArticle.createdAt|date('d F Y') }}
+									{# Format de date plus complet #}
+								</p>
+								<p class="card-text mb-4">
+
+									{{ latestArticle.content|striptags|u.truncate(180, '...', false) }}
+								</p>
+								<div class="mt-auto text-end">
+									<a href="{{ path('article_show', {'id': latestArticle.id}) }}" class="btn btn-primary rounded-pill px-4 py-2">
+										<i class="bi bi-book-half me-2"></i>
+										{# Nécessite Bootstrap Icons #}
+										Lire la suite
+									</a>
+								</div>
+							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -32,23 +61,53 @@
 		{# Liste des autres articles #}
 		<div class="row">
 			{% for article in articles %}
-				<div class="col-md-4 mb-4">
-					<div class="card h-100 border-0 shadow-sm">
-						{# {% if article.imageAsBase64 %} #}
-						{# <img src="data:image/jpeg;base64,{{ article.imageAsBase64 }}" class="card-img-top" alt="{{ article.title }}"> #}
-						{# {% else %} #}
-						{# <img src="/placeholder.jpg" class="card-img-top" alt="Aucune image"> #}
-						{# {% endif %} #}
-							<div class="card-body"> <h5 class="card-title">{{ article.title }}</h5>
-							<p class="card-text text-muted">{{ article.createdAt|date('d/m/Y') }}</p>
-							<p>{{ article.content[:200]|striptags }}...</p>
-							<a href="{{ path('article_show', {'id': article.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
+				<div
+					class="col-md-4 mb-4 d-flex">
+					{# d-flex pour que h-100 sur la carte fonctionne bien avec flexbox #}
+					<div
+						class="card h-100 border-0 shadow-sm overflow-hidden">
+						{# overflow-hidden pour les coins arrondis de l'image #}
+
+						{% if article.imagePath %}
+							<img src="{{ asset(article.imagePath) }}" {# Utiliser asset() pour les chemins relatifs à public/ #} class="card-img-top" alt="Image pour {{ article.title|default('l\'article') }}" style="height: 200px; object-fit: cover; object-position: center;" {# Hauteur fixe, object-fit pour éviter la déformation #}>
+						{% else %}
+							{# Placeholder si pas d'image, pour maintenir la hauteur et le design #}
+							<div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+								<i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
+								{# Nécessite Bootstrap Icons #}
+							</div>
+						{% endif %}
+
+						<div
+							class="card-body d-flex flex-column">
+							{# d-flex flex-column pour pousser le bouton en bas #}
+							<h5 class="card-title">{{ article.title }}</h5>
+							<p class="card-text text-muted small">
+								<i class="bi bi-calendar3 me-1"></i>
+								{# Nécessite Bootstrap Icons #}
+								{{ article.createdAt|date('d F Y') }}
+							</p>
+							<p class="card-text">
+
+								{{ article.content|striptags|u.truncate(100, '...', false) }}
+							</p>
+							<div
+								class="mt-auto text-end">
+								{# mt-auto pour pousser en bas, text-end pour aligner à droite #}
+								<a href="{{ path('article_show', {'id': article.id}) }}" class="btn btn-outline-primary rounded-pill px-3">
+									Lire la suite
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
+			{% else %}
+				{# Optionnel: Message si aucun article n'est trouvé #}
+				<div class="col-12">
+					<p class="text-center text-muted">Aucun article à afficher pour le moment.</p>
+				</div>
 			{% endfor %}
 		</div>
-
 		{# Pagination (optionnelle) #}
 		{% if totalPages > 1 %}
 			<nav>

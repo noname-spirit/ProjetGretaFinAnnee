@@ -12,7 +12,7 @@
 	{# Affichage de l'image de l'article #}
 	<div class="text-center mb-4">
 		{% if article.imagePath %}
-			<img src="{{ article.imagePath }}" alt="" width="10%">
+			<img src="{{ article.imagePath }}" class="img-fluid" alt="" style="max-width: 40%; height: auto;">
 		{% endif %}
 		<p class="text-muted text-center">Publié le
 			{{ article.createdAt|date('d/m/Y') }}</p>
