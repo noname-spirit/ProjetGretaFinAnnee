@@ -54,96 +54,92 @@
 								<a class="nav-link" href="http://127.0.0.1:8000/contact">Contact</a>
 							</li>
 						</ul>
-
-						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-							<li class="nav-item">
-								<a class="nav-link" href="/login">Login</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</header>
-
-		{% block body %}{% endblock %}
-
-		<footer class="text-white text-center text-lg-start" style="background-color: #23242a;">
-			<div class="container p-4">
-				<div class="row mt-4">
-					<div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-						<h5 class="text-uppercase mb-4">À propos</h5>
-						<p>Julia B paperass' est une structure dédiée à l’assistance administrative, à la gestion quotidienne et à l'organisation des tâches de ses clients.</p>
-						<p>Notre mission : alléger votre charge mentale en assurant une gestion rigoureuse, fiable et sur-mesure.</p>
-
-						<div class="mt-4">
-							<a href="#" class="btn btn-lg ">
-								<img src="{{ asset('icon/facebook_50.png') }} " class=" img-fluid w-50 vh-5 object-fit-cover">
-
-							</a>
-							<a href="#" class="btn btn-lg ">
-								<img src="{{ asset('icon/instagram_50.png') }} " class=" img-fluid w-50 vh-5 object-fit-cover">
-
-							</a>
-							<a href="#" class="btn btn-lg">
-								<img src="{{ asset('icon/linkedin_48.png') }} " class=" img-fluid w-50 vh-5 object-fit-cover">
-
-							</a>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-						<ul class="fa-ul" style="margin-left: 1.65em;">
-							<li class="mb-3">
-								<span class="fa-li">
-									<i class="fas fa-home"></i>
-								</span>
-								<span class="ms-2">Antille francaise - France - International</span>
-							</li>
-							<li class="mb-3">
-								<span class="fa-li">
-									<i class="fas fa-envelope"></i>
-								</span>
-								<span class="ms-2">hello@juliabpaprass.fr</span>
-							</li>
-							<li class="mb-3">
-								<span class="fa-li">
-									<i class="fas fa-phone"></i>
-								</span>
-								<span class="ms-2">+238 9XX XX XX / +33 6 XX XX XX XX</span>
-							</li>
-						</ul>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mb-4 mb-md-0 ">
-						<h5 class="text-uppercase mb-4">Horaires</h5>
-						<table class="table table-dark text-center text-white rounded ">
-							<tbody class="font-weight-normal">
-								<tr>
-									<td>Lun - Ven :</td>
-									<td>9h - 18h</td>
-								</tr>
-								<tr>
-									<td>Samedi :</td>
-									<td>10h - 14h</td>
-								</tr>
-								<tr>
-									<td>Dimanche :</td>
-									<td>Fermé</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+						{% if app.user %}
+							<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+								<li class="nav-item">
+									{{ app.user.username |capitalize |regex_replace('/@.*$/', '') }}
+								</li>
+							</li<liclass="nav-item">
+							<a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+						</li>
+					</ul>
+				{% else %}
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_login') }}">Login</a>
+						</li>
+					</ul>
+				{% endif %}
 			</div>
-			<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-				© 2025 Noname Spirit
-			</div>
-		</footer>
+		</div>
+	</body>
+</html></nav></header>{% block body %}{% endblock %}<footer class="text-white text-center text-lg-start" style="background-color: #23242a;"><div class="container p-4">
+<div class="row mt-4">
+	<div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+		<h5 class="text-uppercase mb-4">À propos</h5>
+		<p>Julia B paperass' est une structure dédiée à l’assistance administrative, à la gestion quotidienne et à l'organisation des tâches de ses clients.</p>
+		<p>Notre mission : alléger votre charge mentale en assurant une gestion rigoureuse, fiable et sur-mesure.</p>
 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
+		<div class="mt-4">
+			<a href="#" class="btn btn-lg ">
+				<img src="{{ asset('icon/facebook_50.png') }} " class=" img-fluid w-50 vh-5 object-fit-cover">
+
+			</a>
+			<a href="#" class="btn btn-lg ">
+				<img src="{{ asset('icon/instagram_50.png') }} " class=" img-fluid w-50 vh-5 object-fit-cover">
+
+			</a>
+			<a href="#" class="btn btn-lg">
+				<img src="{{ asset('icon/linkedin_48.png') }} " class=" img-fluid w-50 vh-5 object-fit-cover">
+
+			</a>
+		</div>
+	</div>
+
+	<div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+		<ul class="fa-ul" style="margin-left: 1.65em;">
+			<li class="mb-3">
+				<span class="fa-li">
+					<i class="fas fa-home"></i>
+				</span>
+				<span class="ms-2">Antille francaise - France - International</span>
+			</li>
+			<li class="mb-3">
+				<span class="fa-li">
+					<i class="fas fa-envelope"></i>
+				</span>
+				<span class="ms-2">hello@juliabpaprass.fr</span>
+			</li>
+			<li class="mb-3">
+				<span class="fa-li">
+					<i class="fas fa-phone"></i>
+				</span>
+				<span class="ms-2">+238 9XX XX XX / +33 6 XX XX XX XX</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="col-lg-4 col-md-6 mb-4 mb-md-0 ">
+		<h5 class="text-uppercase mb-4">Horaires</h5>
+		<table class="table table-dark text-center text-white rounded ">
+			<tbody class="font-weight-normal">
+				<tr>
+					<td>Lun - Ven :</td>
+					<td>9h - 18h</td>
+				</tr>
+				<tr>
+					<td>Samedi :</td>
+					<td>10h - 14h</td>
+				</tr>
+				<tr>
+					<td>Dimanche :</td>
+					<td>Fermé</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div></div><div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+© 2025 Noname Spirit</div></footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script><script>document.addEventListener('DOMContentLoaded', function () {
 const pricingToggle = document.getElementById('pricingToggle');
 const toggleLabel = document.getElementById('toggleLabel');
 // Cible plus précisément les cartes de plan qui ont les data-attributes requis
@@ -175,24 +171,5 @@ periodElement.textContent = '/ mois';
 }
 });
 });
-} else { // Optionnel: Log pour débogage si des éléments manquent
-if (! pricingToggle) 
-console.warn('Element with ID "pricingToggle" not found.');
-
-
-
-if (! toggleLabel) 
-console.warn('Element with ID "toggleLabel" not found.');
-
-
-
-if (planCards.length === 0) 
-console.warn('No elements with class "plan-card" and data attributes found.');
-
-
-
 }
-});
-		</script>
-	</body>
-</html>
+});</script></body></html></body></html>

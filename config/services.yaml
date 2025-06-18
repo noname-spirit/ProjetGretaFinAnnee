@@ -25,7 +25,11 @@ services:
     # please note that last definitions always *replace* previous ones
 
     # Example of explicit service definition
-    # App\Security\LoginSuccessHandler:
-    #     arguments: []
+    App\Security\LoginSuccessHandler:
+        arguments:
+            $router: '@router'
+            
+    App\Twig\AppExtension:
+        tags: ['twig.extension']
 
     

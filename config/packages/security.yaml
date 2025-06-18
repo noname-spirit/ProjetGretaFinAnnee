@@ -31,7 +31,8 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
-                default_target_path: admin
+                success_handler: App\Security\LoginSuccessHandler
+                
 
 
             remember_me: 
