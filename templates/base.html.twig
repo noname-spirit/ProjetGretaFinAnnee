@@ -144,39 +144,7 @@
 		</table>
 	</div>
 </div></div><div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-© 2025 Noname Spirit</div></footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script><script>document.addEventListener('DOMContentLoaded', function () {
-const pricingToggle = document.getElementById('pricingToggle');
-const toggleLabel = document.getElementById('toggleLabel');
-// Cible plus précisément les cartes de plan qui ont les data-attributes requis
-const planCards = document.querySelectorAll('.plan-card[data-price-monthly][data-price-annual]');
-
-if (pricingToggle && toggleLabel && planCards.length > 0) {
-pricingToggle.addEventListener('change', function () {
-const isAnnual = this.checked;
-
-if (isAnnual) {
-toggleLabel.textContent = 'Passer au tarif Mensuel';
-} else {
-toggleLabel.textContent = 'Passer au tarif Annuel (Économisez ~15%)';
-} planCards.forEach(card => {
-const priceElement = card.querySelector('.plan-price');
-const periodElement = card.querySelector('.plan-period');
-const monthlyPrice = card.dataset.priceMonthly;
-const annualPrice = card.dataset.priceAnnual;
-
-// Vérifie que les éléments internes price et period existent avant de les manipuler
-if (priceElement && periodElement) {
-if (isAnnual) {
-priceElement.textContent = annualPrice;
-periodElement.textContent = '/ an';
-} else {
-priceElement.textContent = monthlyPrice;
-periodElement.textContent = '/ mois';
-}
-}
-});
-});
-}
-});</script></body></html></body></html>
+© 2025 Noname Spirit -
+<a href="{{ path('app_mentions_legales') }}">Mention Legal</a>
+-
+<a href="{{ path('app_cgps') }}">CGPS</a></footer><scriptsrc="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"crossorigin="anonymous"></script><script>document.addEventListener('DOMContentLoaded',function(){constpricingToggle=document.getElementById('pricingToggle');consttoggleLabel=document.getElementById('toggleLabel');//Cibleplusprécisémentlescartesdeplanquiontlesdata-attributesrequisconstplanCards=document.querySelectorAll('.plan-card[data-price-monthly][data-price-annual]');if(pricingToggle&&toggleLabel&&planCards.length>0){pricingToggle.addEventListener('change',function(){constisAnnual=this.checked;if(isAnnual){toggleLabel.textContent='PasserautarifMensuel';}else{toggleLabel.textContent='PasserautarifAnnuel(Économisez~15%)';}planCards.forEach(card=>{constpriceElement=card.querySelector('.plan-price');constperiodElement=card.querySelector('.plan-period');constmonthlyPrice=card.dataset.priceMonthly;constannualPrice=card.dataset.priceAnnual;//Vérifiequelesélémentsinternespriceetperiodexistentavantdelesmanipulerif(priceElement&&periodElement){if(isAnnual){priceElement.textContent=annualPrice;periodElement.textContent='/an';}else{priceElement.textContent=monthlyPrice;periodElement.textContent='/mois';}}});});}});</script></body></html></body></html>

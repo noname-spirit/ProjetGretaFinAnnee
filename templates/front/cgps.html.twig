@@ -1,0 +1,343 @@
+{% extends 'base.html.twig' %}
+{% block title %}CGPS
+{% endblock %}
+
+{% block body %}
+
+	<!doctype html>
+	<html lang="fr">
+		<head>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width,initial-scale=1"/>
+			<title>CGVS — Julia B. Paprass'</title>
+			<meta
+			name="description" content="Conditions Générales de Vente et de Services — Julia B. Paprass'."/>
+			<!-- Bootstrap 5 CSS -->
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+			<style>:root
+			{
+				--brand: #0d6efd;
+				--muted: #6c757d
+			}
+			body {
+				font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+			}
+			header {
+				background: #f8f9fa;
+				border-bottom: 1px solid #eee
+			}
+			.legal-section {
+				scroll-margin-top: 90px
+			}
+			.print-note {
+				display: none
+			}
+			@media print {
+				.cookie-banner,
+				header,
+				footer,
+				.btn {
+					display: none !important
+				}
+				.print-note {
+					display: block
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="py-3">
+			<div class="container d-flex justify-content-between align-items-center">
+				<div>
+					<h1 class="h5 mb-0">CGVS — Julia B. Paprass'</h1>
+					<small class="text-muted">Entreprise individuelle • SIRET 87812594700019</small>
+				</div>
+				<nav>
+					<a class="me-3 text-decoration-none" href="#sommaire">Sommaire</a>
+					<a class="me-3 text-decoration-none" href="#articles">Articles</a>
+					<a class="text-decoration-none" href="#contact">Contact</a>
+				</nav>
+			</div>
+		</header>
+
+		<main
+			class="container my-4">
+			<!-- Intro -->
+			<section class="mb-4">
+				<h2 class="h6">Introduction</h2>
+				<p>Les présentes Conditions Générales de Vente et de Services (CGVS) sont conclues entre :</p>
+				<ul>
+					<li>
+						<strong>Le PRESTATAIRE</strong>
+						: entreprise individuelle
+						<strong>Julia B. Paprass'</strong>, IMPASSE PIERRE-JUSTIN - GRANDE RAVINE - 97190 LE GOSIER (GUADELOUPE), immatriculée SIRET 87812594700019, représentée par Madame Julia BERNARI.</li>
+					<li>
+						<strong>Le CLIENT</strong>
+						: toute personne physique ou morale faisant appel aux services du PRESTATAIRE.</li>
+				</ul>
+				<p>Ces CGVS définissent les relations contractuelles et les conditions applicables à toute commande. Elles s'appliquent à l'exclusion de tout autre document, sauf conditions particulières acceptées par écrit.</p>
+			</section>
+
+			<!-- Sommaire -->
+			<section id="sommaire" class="mb-4 p-3 bg-light rounded">
+				<strong>Sommaire</strong>
+				<ul class="mb-0 ms-3">
+					<li>
+						<a href="#article-prestation">Article 1 — Présentation & Prestations</a>
+					</li>
+					<li>
+						<a href="#article-engagement">Article 2 — Engagements</a>
+					</li>
+					<li>
+						<a href="#article-lieux">Article 3 — Lieux & frais</a>
+					</li>
+					<li>
+						<a href="#article-devis">Article 4 — Devis & commande</a>
+					</li>
+					<li>
+						<a href="#article-tarifs">Article 5 — Tarifs & acomptes</a>
+					</li>
+					<li>
+						<a href="#article-annulation">Article 6 — Annulation & frais</a>
+					</li>
+					<li>
+						<a href="#article-paiement">Article 7 — Modalités de paiement</a>
+					</li>
+					<li>
+						<a href="#article-penalites">Article 8 — Pénalités de retard</a>
+					</li>
+					<li>
+						<a href="#article-confidentialite">Article 9 — Confidentialité & données</a>
+					</li>
+					<li>
+						<a href="#article-propriete">Article 10 — Propriété & responsabilité</a>
+					</li>
+					<li>
+						<a href="#article-juridiction">Article 11 — Juridiction</a>
+					</li>
+				</ul>
+			</section>
+
+			<!-- Articles (Accordion) -->
+			<section id="articles" class="legal-section mb-5">
+				<div
+					class="accordion" id="cgvsAccordion">
+
+					<!-- 1 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Article 1 — Présentation & Prestations</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Le PRESTATAIRE propose des services ponctuels ou réguliers d'assistance en gestion administrative, commerciale, budgétaire et ressources humaines.</p>
+								<p>
+									<strong>Exemples de missions :</strong>
+								</p>
+								<ul>
+									<li>Gestion de planning, gestion client, suivi de trésorerie.</li>
+									<li>Suivi du registre du personnel, audits internes, pré-comptabilité.</li>
+									<li>Déclaration d'activité pour auto-entrepreneurs, missions ponctuelles sur demande.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- 2 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Article 2 — Engagements</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Le PRESTATAIRE mettra en œuvre son savoir-faire et son professionnalisme pour réaliser les missions confiées et respectera les délais convenus sauf cas de force majeure.</p>
+								<p>Le CLIENT s'engage à fournir au PRESTATAIRE tous les éléments nécessaires, de bonne qualité et sur supports valides. Tout retard ou omission du CLIENT peut entraîner une révision de la date de livraison ou l'annulation de la commande.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 3 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">Article 3 — Lieux & frais</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Les prestations peuvent être réalisées en distanciel, dans les locaux du PRESTATAIRE, en présentiel chez le CLIENT ou en tout autre lieu convenu entre les parties.</p>
+								<p>Les prestations présentielle font l'objet d'une facturation : soit par indemnité kilométrique (pour les devis), soit par inclusion au forfait du CLIENT suivant le devis.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 4 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingFour">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">Article 4 — Devis & commande</button>
+						</h2>
+						<div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Toute commande fait préalablement l'objet d'un devis gratuit. La commande est confirmée lorsque :</p>
+								<ol>
+									<li>Le CLIENT accepte le devis (clic sur le bouton "accepter le devis" ou retour du devis signé avec la mention "bon pour accord" sans modification).</li>
+									<li>Le CLIENT verse des arrhes à hauteur de 50% (sauf disposition contraire indiquée sur le devis).</li>
+								</ol>
+								<p>À défaut d'acceptation et d'arrhes, le PRESTATAIRE se réserve le droit de ne pas commencer la prestation. Un devis non confirmé dans le mois suivant son émission est réputé caduc.</p>
+								<p>Le PRESTATAIRE peut ajuster les tarifs et délais après information du CLIENT en cas d'ajout de documents postérieurs au devis ou de demande urgente (prévenance &lt; 48h, après 18h, week-ends, jours fériés).</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 5 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingFive">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">Article 5 — Tarifs & acomptes</button>
+						</h2>
+						<div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Les tarifs applicables sont ceux en vigueur au moment de la prise de commande et sont indiqués en euros. Les prestations pour entreprises sont négociées selon les exigences propres à chaque mission.</p>
+								<p>Les tarifs affichés sur les supports de communication sont indicatifs et remplacés par le devis personnalisé. Les tarifs peuvent être révisés au 1er janvier de chaque année ; le PRESTATAIRE se réserve toutefois la possibilité de modifier ses prix à tout moment, sans remise en cause des engagements déjà contractés.</p>
+								<p>Toute facturation au tarif horaire comprend une première heure indivisible.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 6 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingSix">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">Article 6 — Annulation & frais supplémentaires</button>
+						</h2>
+						<div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>En cas d'annulation d'une commande en cours de réalisation, le CLIENT doit payer la totalité de la prestation déjà effectuée. L'annulation doit être confirmée par écrit.</p>
+								<p>Si le PRESTATAIRE ne peut assurer la mission pour cause réelle et sérieuse (accident, maladie grave...), la résiliation intervient de plein droit après notification, avec un préavis de 7 jours.</p>
+								<p>Les frais supplémentaires de fonctionnement (déplacements, envois, etc.) sont à la charge du CLIENT ; si ces frais sont avancés, le CLIENT rembourse immédiatement sur présentation de facture.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 7 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingSeven">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven">Article 7 — Modalités de paiement</button>
+						</h2>
+						<div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Le PRESTATAIRE émet une facture à la fin de chaque intervention ponctuelle ou mensuellement pour les interventions permanentes. Un acompte de 50% est demandé à la signature du devis et doit être encaissé avant le démarrage des prestations.</p>
+								<p>Le solde doit être réglé à la livraison des travaux. La facture doit être payée au plus tard
+									<strong>5 jours</strong>
+									après sa date d'émission.</p>
+								<p>Toute réclamation concernant une facture doit être adressée par écrit au siège du PRESTATAIRE dans les 8 jours ouvrés suivant sa réception ; passé ce délai, la facture ne pourra plus être contestée.</p>
+								<p>Moyen de paiement : virement bancaire (coordonnées sur devis & facture).</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 8 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingEight">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight">Article 8 — Pénalités de retard</button>
+						</h2>
+						<div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>En cas de défaut de paiement, une pénalité de retard égale au taux d'intérêt légal majoré ainsi qu'une indemnité forfaitaire de 40 € au titre des frais de recouvrement sont exigibles sans mise en demeure.</p>
+								<p>Les pénalités courent de plein droit le jour suivant la date d'échéance portée sur la facture. En cas de recouvrement judiciaire, le CLIENT supportera les frais de mise en demeure et une clause pénale représentant 15% du montant total de la commande (minimum 30 €).</p>
+								<p>En cas de non-paiement, le PRESTATAIRE pourra suspendre ou annuler les prestations, et supprimer les remises éventuelles.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 9 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingNine">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine">Article 9 — Confidentialité & Loi Informatique</button>
+						</h2>
+						<div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Le PRESTATAIRE s'engage à respecter la confidentialité des informations communiquées avant, pendant et après la mission. Les originaux peuvent être restitués sur simple demande.</p>
+								<p>Le PRESTATAIRE ne peut être tenu responsable d'une interception lors du transfert (notamment internet). Le CLIENT doit informer le PRESTATAIRE des moyens de transfert souhaités pour protéger les informations sensibles.</p>
+								<p>Les dossiers traités sont en principe supprimés 6 mois après la restitution des travaux.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 10 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTen">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen">Article 10 — Propriété, responsabilité & force majeure</button>
+						</h2>
+						<div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Le PRESTATAIRE prendra soin des fichiers et documents qui lui sont confiés, mais le CLIENT reste responsable des sauvegardes et de la protection de ses supports.</p>
+								<p>Les travaux restent la propriété du PRESTATAIRE jusqu'au paiement intégral (loi du 12 mai 1980). En cas de non-paiement, le PRESTATAIRE peut exiger la restitution des travaux aux frais du CLIENT.</p>
+								<p>Le PRESTATAIRE peut refuser toute mission contraire à l'honnêteté ou à la morale (pornographie, racisme, incitation à la violence, etc.).</p>
+								<p>La responsabilité du PRESTATAIRE ne peut être engagée en cas de force majeure : événement imprévisible, irrésistible et extérieur (article 1148 du Code civil).</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 11 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingEleven">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven">Article 11 — Litiges & compétence territoriale</button>
+						</h2>
+						<div id="collapseEleven" class="accordion-collapse collapse" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>En cas de contestation, le CLIENT contactera en priorité le PRESTATAIRE pour une solution amiable. Si aucun accord n'est trouvé, les juridictions de la Guadeloupe sont compétentes. Le droit applicable est le droit français.</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- accordion -->
+			</section>
+
+			<!-- Contact & signature -->
+			<section id="contact" class="mb-5">
+				<h3 class="h6">Contact</h3>
+				<p>Pour toute question relative aux présentes CGVS :</p>
+				<ul>
+					<li>Email :
+						<a href="mailto:hello@juliabpaprass.fr">hello@juliabpaprass.fr</a>
+					</li>
+					<li>Adresse : IMPASSE PIERRE-JUSTIN - GRANDE RAVINE - 97190 LE GOSIER</li>
+				</ul>
+				<p class="small text-muted">Ces CGVS peuvent être modifiées : la version applicable est celle en vigueur à la date de signature du devis.</p>
+			</section>
+
+			<p class="print-note text-muted small">Document imprimé — Conditions Générales de Vente et de Services — Julia B. Paprass'</p>
+		</main>
+
+
+		<!-- Footer -->
+		<footer class="bg-light py-4 mt-4">
+			<div class="container d-flex justify-content-between">
+				<div>
+					<strong>Julia B. Paprass'</strong><br>
+					IMPASSE PIERRE-JUSTIN - GRANDE RAVINE - 97190 LE GOSIER
+				</div>
+				<div class="text-end small">
+					Contact :
+					<a href="mailto:hello@juliabpaprass.fr">hello@juliabpaprass.fr</a>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Bootstrap JS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+
+
+			// Smooth anchors
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+a.addEventListener('click', e => {
+const target = document.querySelector(a.getAttribute('href'));
+if (target) {
+e.preventDefault();
+target.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+});
+});
+		</script>
+	</body>
+</html>{% endblock %}

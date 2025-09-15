@@ -21,16 +21,16 @@
 
 	</div>
 
-	{# Contenu de l'article #}
-	<div class="article-content mb-2 text-center-justify w-75 mx-auto">
 
-		{# Utilisation de striptags pour éviter les balises HTML dans le titre #}
+	<div
+		class="article-content mb-2 text-center-justify w-75 mx-auto">
 
 		{# Utilisation de raw pour afficher le contenu HTML #}
-	{{ article.content|raw }}
+		{{ article.content|raw }}
 	</div>
 
-		<div class="text-center"> <a href="{{ path('blog_index') }}" class="btn btn-secondary mt-4">Retour à la liste des articles</a>
+	<div class="text-center">
+		<a href="{{ path('blog_index') }}" class="btn btn-secondary mt-4">Retour à la liste des articles</a>
 	</div>
 </div>
 {# ---------- commentaire ----------- #}
@@ -47,9 +47,7 @@
 			</div>
 		</div>
 		{# ----------commentaire post ------- #}
-		<div
-			class="container mt-5 mb-5 d-flex justify-content-center">
-			{# Modifications ici : suppression de style="max-width: 700px;" et ajout de border-0 #}
+		<div class="container mt-5 mb-5 d-flex justify-content-center">
 			<div class="card shadow w-100 border-0">
 				<div class="card-body">
 					<h5 class="card-title text-center mb-4">Commentaires</h5>

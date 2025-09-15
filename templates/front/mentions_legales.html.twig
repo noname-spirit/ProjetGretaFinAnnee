@@ -1,0 +1,412 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions Légales
+{% endblock %}
+
+{% block body %}
+	<!doctype html>
+	<html lang="fr">
+		<head>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<title>Mentions légales & CGVS — Julia B. Paprass'</title>
+			<meta
+			name="description" content="Mentions légales et Conditions Générales de Vente et Services de Julia B. Paprass'."/>
+			<!-- Bootstrap 5 CSS (CDN) -->
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+			<style>
+			/* Petite personnalisation */:root
+			{
+				--brand: #4b5563;
+				--muted: #6b7280;
+			}
+			body {
+				font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+				color: #222;
+			}
+			header {
+				background: linear-gradient(90deg, rgba(75,85,99,0.06), rgba(255,255,255,0));
+			}
+			.toc a {
+				text-decoration: none;
+			}
+			.legal-section {
+				scroll-margin-top: 100px;
+			} /* pour ancrages */
+			.print-note {
+				display: none;
+			}
+			@media print {
+				.cookie-banner,
+				.navbar,
+				footer,
+				.print-note {
+					display: none !important;
+				}
+				.print-note {
+					display: block;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Navbar / Header -->
+		<header class="mb-4">
+			<nav class="navbar navbar-expand-lg navbar-light container">
+				<a class="navbar-brand fw-bold" href="#">Julia B. Paprass'</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navMain">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="#informations-legales">Informations légales</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#propriete-intellectuelle">Propriété intellectuelle</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#cookies">Cookies</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#rgpd">Données personnelles (RGPD)</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#cgvs">CGVS</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<main
+			class="container mb-5">
+			<!-- Hero -->
+			<div class="row mb-3">
+				<div class="col-md-8">
+					<h1 class="h3">Mentions légales & Conditions Générales de Vente et Services</h1>
+					<p class="text-muted">Conformément à la Loi n°2004-575 du 21 juin 2004 pour la Confiance dans l'Économie Numérique (L.C.E.N.).</p>
+				</div>
+			</div>
+
+			<!-- Sommaire / Table des matières -->
+			<section class="mb-4 p-3 bg-light rounded toc" aria-label="Table des matières">
+				<strong>Sommaire :</strong>
+				<ul class="mb-0 ms-3">
+					<li>
+						<a href="#informations-legales">1. Informations légales</a>
+					</li>
+					<li>
+						<a href="#presentation-principe">2. Présentation et principe</a>
+					</li>
+					<li>
+						<a href="#accessibilite">3. Accessibilité</a>
+					</li>
+					<li>
+						<a href="#propriete-intellectuelle">4. Propriété intellectuelle</a>
+					</li>
+					<li>
+						<a href="#cookies">5. Liens hypertextes et cookies</a>
+					</li>
+					<li>
+						<a href="#rgpd">6. Protection des biens et des personnes - gestion des données personnelles</a>
+					</li>
+					<li>
+						<a href="#limitations-resp">7. Limitation de responsabilité</a>
+					</li>
+					<li>
+						<a href="#cgvs">Conditions Générales de Vente et Services (CGVS)</a>
+					</li>
+				</ul>
+			</section>
+
+			<!-- 1. Informations légales -->
+			<section id="informations-legales" class="legal-section mb-4">
+				<h2 class="h5">1. Informations légales</h2>
+				<div class="row">
+					<div class="col-md-7">
+						<dl class="row">
+							<dt class="col-sm-4">Éditeur</dt>
+							<dd class="col-sm-8">Nom :
+								<strong>Julia BERNARI</strong><br>Adresse : 2 LOTISSEMENT SCAF, MOUDONG SUD, 97122 BAIE-MAHAULT<br>Tél. : 0690411459</dd>
+
+							<dt class="col-sm-4">Activité</dt>
+							<dd class="col-sm-8">RCS / Inscription : 94074307300014<br>N° TVA intracommunautaire : FR69940743073</dd>
+
+							<dt class="col-sm-4">Site</dt>
+							<dd class="col-sm-8">Domaine :
+								<strong>www.juliabpaprass.fr</strong>
+							</dd>
+
+							<dt class="col-sm-4">Publication</dt>
+							<dd class="col-sm-8">Responsable : Julia BERNARI — Email :
+								<a href="mailto:hello@juliabpaprass.fr">hello@juliabpaprass.fr</a><br>Tribunal compétent : Pointe-à-Pitre</dd>
+						</dl>
+					</div>
+					<div class="col-md-5">
+						<div class="card border-0">
+							<div class="card-body">
+								<h3 class="h6">Hébergement & Webmaster</h3>
+								<p class="text-muted mb-0">Entreprise d'hébergement :
+									<em>à compléter</em><br>Webmaster / agence :
+									<em>à compléter</em>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 2. Présentation et principe -->
+			<section id="presentation-principe" class="legal-section mb-4">
+				<h2 class="h5">2. Présentation et principe</h2>
+				<p>Par "Utilisateur", on entend tout internaute se connectant et utilisant le site
+					<strong>www.juliabpaprass.fr</strong>. Julia BERNARI s’efforce de fournir des informations précises et à jour mais ne garantit pas l'exactitude ou l'actualité des contenus. L'utilisateur vérifie l'exactitude et signale toute modification utile. Julia BERNARI décline toute responsabilité sur l'usage fait des informations publiées.</p>
+			</section>
+
+			<!-- 3. Accessibilité -->
+			<section id="accessibilite" class="legal-section mb-4">
+				<h2 class="h5">3. Accessibilité</h2>
+				<p>Le site est accessible 24/7 sauf interruptions (maintenance, force majeure). L'exploitant mettra tout en œuvre pour rétablir l’accès en cas d’incident mais n'a qu'une obligation de moyens.</p>
+			</section>
+
+			<!-- 4. Propriété intellectuelle -->
+			<section id="propriete-intellectuelle" class="legal-section mb-4">
+				<h2 class="h5">4. Propriété intellectuelle</h2>
+				<p>Tous les éléments du site (textes, images, graphismes, logo, icônes, sons, logiciels...) sont la propriété exclusive de
+					<strong>Julia BERNARI</strong>
+					ou font l'objet d'autorisations d'utilisation. Toute reproduction partielle ou totale est interdite sans autorisation écrite préalable — faute de quoi, poursuites pour contrefaçon (articles L.335-2 et suivants CPI).</p>
+			</section>
+
+			<!-- 5. Liens hypertextes et cookies -->
+			<section id="cookies" class="legal-section mb-4">
+				<h2 class="h5">5. Liens hypertextes et cookies</h2>
+				<h3 class="h6">5.1. Liens hypertextes</h3>
+				<p>Le site peut contenir des liens vers d'autres sites. Julia BERNARI n'a pas la maîtrise de ces sites externes et n'en garantit ni la disponibilité ni le contenu. Les hyperliens vers ce site nécessitent l'autorisation préalable de l'éditeur.</p>
+
+				<h3 class="h6 mt-3">5.2. Cookies</h3>
+				<p>Un cookie est un fichier texte stocké par votre navigateur. Il ne permet pas d'identifier la personne mais enregistre des informations de navigation. Vous pouvez configurer votre navigateur pour être informé de la présence de cookies et les refuser (voir
+					<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).</p>
+
+				<h3 class="h6 mt-3">5.3. Cookies tiers</h3>
+				<p>Le site peut contenir des contenus ou services tiers (ex. plateformes externes). Ces tiers ont leurs propres politiques de confidentialité : la responsabilité de l'éditeur s'arrête dès que l'utilisateur quitte le site.</p>
+			</section>
+
+			<!-- 6. RGPD / gestion des données personnelles -->
+			<section id="rgpd" class="legal-section mb-4">
+				<h2 class="h5">6. Protection des biens et des personnes — gestion des données personnelles</h2>
+				<p>Conformément aux textes applicables (Loi Informatique et Libertés, RGPD n°2016-679),
+					<strong>Julia BERNARI</strong>
+					est responsable du traitement des données collectées sur le site.</p>
+
+				<h3 class="h6 mt-2">6.1. Responsable du traitement</h3>
+				<p>Responsable :
+					<strong>Julia BERNARI</strong>
+					— Site : www.juliabpaprass.fr — Email :
+					<a href="mailto:hello@juliabpaprass.fr">hello@juliabpaprass.fr</a>.</p>
+
+				<h3 class="h6 mt-2">6.2. Finalités</h3>
+				<ul>
+					<li>Permettre la navigation et l'accès à l'espace privé (données de connexion).</li>
+					<li>Prévenir la fraude informatique (IP, logs).</li>
+					<li>Améliorer l'expérience utilisateur (statistiques anonymes).</li>
+				</ul>
+
+				<p>Vos données ne sont pas commercialisées. Conformément à la loi, vous disposez d'un droit d'accès, rectification et suppression : contactez l'éditeur par email.</p>
+			</section>
+
+			<!-- 7. Limitation de responsabilité -->
+			<section id="limitations-resp" class="legal-section mb-4">
+				<h2 class="h5">7. Limitation de responsabilité</h2>
+				<p>Les informations publiées sont données à titre indicatif et peuvent contenir des erreurs. Signalez toute anomalie par email en précisant la page, l'action posée et les caractéristiques techniques (navigateur, appareil). Le téléchargement de contenus se fait aux risques de l'utilisateur.</p>
+				<p>Les mentions légales peuvent évoluer sans préavis : consultez-les régulièrement.</p>
+			</section>
+
+			<!-- CGVS (accordéon) -->
+			<section id="cgvs" class="legal-section mb-5">
+				<h2 class="h5">Conditions Générales de Vente et Services (CGVS)</h2>
+				<p class="text-muted">Version fournie — la date applicable sera celle du devis signé.</p>
+
+				<div
+					class="accordion" id="cgvsAccordion" role="tablist">
+					<!-- Article 1 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="cgvsHeadingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cgvsOne" aria-expanded="false" aria-controls="cgvsOne">
+								Article 1 — Présentation
+							</button>
+						</h2>
+						<div id="cgvsOne" class="accordion-collapse collapse" aria-labelledby="cgvsHeadingOne" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Les conditions sont conclues entre l’entreprise individuelle
+									<strong>Julia B. Paprass'</strong>
+									(PRESTATAIRE) immatriculée SIRET 87812594700019 et toute personne physique ou morale (CLIENT). Elles définissent les relations contractuelles et s'appliquent à toute commande.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Article 2 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="cgvsHeadingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cgvsTwo" aria-expanded="false" aria-controls="cgvsTwo">
+								Article 2 — Prestations
+							</button>
+						</h2>
+						<div id="cgvsTwo" class="accordion-collapse collapse" aria-labelledby="cgvsHeadingTwo" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Prestations : services ponctuels ou réguliers d’assistance de gestion et conseil administratif, commercial, budgétaire et RH.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Article 3 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="cgvsHeadingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cgvsThree" aria-expanded="false" aria-controls="cgvsThree">
+								Article 3 — Engagement
+							</button>
+						</h2>
+						<div id="cgvsThree" class="accordion-collapse collapse" aria-labelledby="cgvsHeadingThree" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Le PRESTATAIRE s'engage à mettre en œuvre son savoir-faire et respecter les délais sauf force majeure. Le CLIENT doit fournir les éléments nécessaires ; tout retard peut entraîner révision des délais.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Article 4 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="cgvsHeadingFour">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cgvsFour" aria-expanded="false" aria-controls="cgvsFour">
+								Article 4 — Lieux & frais
+							</button>
+						</h2>
+						<div id="cgvsFour" class="accordion-collapse collapse" aria-labelledby="cgvsHeadingFour" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Prestations en distanciel, en présentiel (frais kilométriques ou forfait). Tarifs : 0,66 €/km (à adapter si nécessaire).</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Article 5 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="cgvsHeadingFive">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cgvsFive" aria-expanded="false" aria-controls="cgvsFive">
+								Article 5 — Devis & commande
+							</button>
+						</h2>
+						<div id="cgvsFive" class="accordion-collapse collapse" aria-labelledby="cgvsHeadingFive" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Devis préalables fournis gratuitement. Confirmation de commande par acceptation du devis et versement d'un acompte de 50 %. Devis caduc après 1 mois sans acceptation.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Article 6 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="cgvsHeadingSix">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cgvsSix" aria-expanded="false" aria-controls="cgvsSix">
+								Article 6 — Acompte
+							</button>
+						</h2>
+						<div id="cgvsSix" class="accordion-collapse collapse" aria-labelledby="cgvsHeadingSix" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Toute commande est soumise à un acompte de 50% avant démarrage des prestations.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Article 7 -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="cgvsHeadingSeven">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cgvsSeven" aria-expanded="false" aria-controls="cgvsSeven">
+								Article 7 — Tarifs
+							</button>
+						</h2>
+						<div id="cgvsSeven" class="accordion-collapse collapse" aria-labelledby="cgvsHeadingSeven" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<p>Les tarifs applicables sont ceux en vigueur au moment de la commande. Révision annuelle au 1er janvier possible. Première heure indivisible pour la facturation horaire.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Articles restants (résumés) -->
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="cgvsHeadingMore">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cgvsMore" aria-expanded="false" aria-controls="cgvsMore">
+								Articles 8 à 16 — Divers (frais, rétractation, paiement, confidentialité, propriété, responsabilité, compétence)
+							</button>
+						</h2>
+						<div id="cgvsMore" class="accordion-collapse collapse" aria-labelledby="cgvsHeadingMore" data-bs-parent="#cgvsAccordion">
+							<div class="accordion-body">
+								<ul>
+									<li>
+										<strong>Article 8 :</strong>
+										frais supplémentaires à la charge du CLIENT (remboursement sur présentation de factures).</li>
+									<li>
+										<strong>Article 9 :</strong>
+										droit de rétractation 7 jours si exécution postérieure ; en cas d'annulation en cours de réalisation, facturation de la prestation réalisée.</li>
+									<li>
+										<strong>Article 10 :</strong>
+										modalités de paiement — acompte 50 %, solde à la livraison ; réclamations factures sous 8 jours ouvrés.</li>
+									<li>
+										<strong>Article 11 :</strong>
+										pénalités de retard : intérêts légaux majorés + indemnité forfaitaire 40 € ; clause pénale possible en cas de procédure (15% min 30 €).</li>
+									<li>
+										<strong>Article 12 :</strong>
+										droit de rectification/suppression des données ; conservation des dossiers 6 mois après restitution.</li>
+									<li>
+										<strong>Article 13 :</strong>
+										confidentialité : le PRESTATAIRE s'engage, mais recommande moyens de transfert sécurisés pour données sensibles.</li>
+									<li>
+										<strong>Article 14 :</strong>
+										propriété des travaux jusqu'au paiement intégral (loi du 12 mai 1980).</li>
+									<li>
+										<strong>Article 15 :</strong>
+										responsabilité limitée, force majeure, refus de prestations contraires à l'éthique.</li>
+									<li>
+										<strong>Article 16 :</strong>
+										compétence exclusive des juridictions de la Guadeloupe (droit français).</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<p class="print-note text-muted small">Document imprimé — mentions légales & CGVS.</p>
+		</main>
+
+
+		<!-- Footer -->
+		<footer class="bg-light py-4 mt-4">
+			<div class="container d-flex flex-column flex-md-row justify-content-between">
+				<div>
+					<strong>Julia B. Paprass'</strong><br>
+					IMPASSE PIERRE-JUSTIN - GRANDE RAVINE - 97190 LE GOSIER
+				</div>
+				<div class="text-md-end">
+					<small class="text-muted">Contact :
+						<a href="mailto:hello@juliabpaprass.fr">hello@juliabpaprass.fr</a>
+						• Tél. 0690411459</small>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Bootstrap 5 JS (CDN) + small script pour cookies -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+
+
+			// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+a.addEventListener('click', (e) => {
+const target = document.querySelector(a.getAttribute('href'));
+if (target) {
+e.preventDefault();
+target.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+});
+});
+		</script>
+	</body>
+</html>{% endblock %}
