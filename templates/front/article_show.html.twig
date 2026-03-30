@@ -6,80 +6,74 @@
 {% endblock %}
 
 {% block body %}
-<div
-	class="container mt-5 mb-5">
-
-	{# Affichage de l'image de l'article #}
-	<div class="text-center mb-4">
-		{% if article.imagePath %}
-			<img src="{{ article.imagePath }}" class="img-fluid" alt="" style="max-width: 40%; height: auto;">
-		{% endif %}
-		<p class="text-muted text-center">Publié le
-			{{ article.createdAt|date('d/m/Y') }}</p>
-		<h1 class="mb-4 text-center">{{ article.title }}</h1>
-		<h2>{{ article.subTitle }}</h2>
-
-	</div>
-
-
 	<div
-		class="article-content mb-2 text-center-justify w-75 mx-auto">
+		class="container mt-5 mb-5">
 
-		{# Utilisation de raw pour afficher le contenu HTML #}
-		{{ article.content|raw }}
-	</div>
-
-	<div class="text-center">
-		<a href="{{ path('blog_index') }}" class="btn btn-secondary mt-4">Retour à la liste des articles</a>
-	</div>
-</div>
-{# ---------- commentaire ----------- #}
-{% if is_granted('ROLE_USER') %}
-
-
-	<div class="container mt-5 mb-5 d-flex justify-content-center">
-		<div class="card shadow w-50">
-			<div class="card-body text-left">
-				<h5 class="card-title text-center">Laisser un commentaire</h5>
-				{{ form(commentaireForm) }}
-
-				</div>
-			</div>
+		{# Affichage de l'image de l'article #}
+		<div class="text-center mb-4">
+			{% if article.imagePath %}
+				{# CORRECTION : Utilisation de asset() #}
+				<img src="{{ asset(article.imagePath) }}" class="img-fluid" alt="{{ article.title }}" style="max-width: 40%; height: auto;">
+			{% endif %}
+			<p class="text-muted text-center">Publié le
+				{{ article.createdAt|date('d/m/Y') }}</p>
+			<h1 class="mb-4 text-center">{{ article.title }}</h1>
+			<h2 class="text-center">{{ article.subTitle }}</h2>
 		</div>
-		{# ----------commentaire post ------- #}
-		<div class="container mt-5 mb-5 d-flex justify-content-center">
-			<div class="card shadow w-100 border-0">
-				<div class="card-body">
-					<h5 class="card-title text-center mb-4">Commentaires</h5>
 
-					<div class="card-text">
-						{% if commentaires is not empty %}
-							{% for commentaire in commentaires %}
-								<div class="mb-3 text-start">
-									<p class="mb-1">
-										<strong>{{ commentaire.author.username }}</strong>
-										a dit :
-										{% if commentaire.createdAt is defined and commentaire.createdAt is not null %}
-											<small class="text-muted ms-2">
-												le
-												{{ commentaire.createdAt | date("d/m/Y à H:i") }}
-											</small>
-										{% endif %}
-									</p>
-									<p>
-										{{ commentaire.message | nl2br | raw }}
-									</p>
-								</div>
-								{% if not loop.last %}
-									<hr class="my-3">
-								{% endif %}
-							{% endfor %}
-						{% else %}
-							<p class="text-center text-muted">Aucun commentaire pour le moment.</p>
-						{% endif %}
+		<div
+			class="article-content mb-2 text-center-justify w-75 mx-auto">
+			{# Utilisation de raw pour afficher le contenu HTML #}
+			{{ article.content|e('html') }}
+		</div>
+
+		<div class="text-center">
+			<a href="{{ path('blog_index') }}" class="btn btn-secondary mt-4">Retour à la liste des articles</a>
+		</div>
+	</div>
+
+	{# ---------- commentaire ----------- #}
+	{% if is_granted('ROLE_USER') %}
+		<div class="container mt-5 mb-5 d-flex justify-content-center">
+			<div class="card shadow w-50">
+				<div class="card-body text-left">
+					<h5 class="card-title text-center">Laisser un commentaire</h5>
+					{{ form(commentaireForm) }}
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</div></div></div></div></div></div></div>{% endif %}{% endblock %}
+
+			{# ---------- commentaire post ------- #}
+			<div class="container mt-5 mb-5 d-flex justify-content-center">
+				<div class="card shadow w-100 border-0">
+					<div class="card-body">
+						<h5 class="card-title text-center mb-4">Commentaires</h5>
+						<div class="card-text">
+							{% if commentaires is not empty %}
+								{% for commentaire in commentaires %}
+									<div class="mb-3 text-start">
+										<p class="mb-1">
+											<strong>{{ commentaire.author.username }}</strong>
+											a dit :
+											{% if commentaire.createdAt is defined and commentaire.createdAt is not null %}
+												<small class="text-muted ms-2">
+													le
+													{{ commentaire.createdAt|date("d/m/Y à H:i") }}
+												</small>
+											{% endif %}
+										</p>
+										<p>{{ commentaire.message|nl2br }}</p>
+									</div>
+									{% if not loop.last %}
+										<hr class="my-3">
+									{% endif %}
+								{% endfor %}
+							{% else %}
+								<p class="text-center text-muted">Aucun commentaire pour le moment.</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endblock %}
