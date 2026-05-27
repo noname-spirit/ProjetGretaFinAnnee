@@ -21,21 +21,17 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            # custom_authenticator: App\Security\AppAuthenticator
+
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                success_handler: App\Security\LoginSuccessHandler
 
             logout:
                 path: app_logout
                 target: '/'
 
-        
-            form_login:
-                login_path: app_login
-                check_path: app_login
-                success_handler: App\Security\LoginSuccessHandler
-                
-
-
-            remember_me: 
+            remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800
                 path: /

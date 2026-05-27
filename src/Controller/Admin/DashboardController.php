@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Role;
 use App\Entity\User;
 use App\Entity\Activite;
 use App\Entity\ArticleBlog;

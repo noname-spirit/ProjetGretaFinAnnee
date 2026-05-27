@@ -148,8 +148,8 @@ class ArticleBlog
 
         return $this;
     }
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->id;
+        return $this->title ?? (string) $this->id;
     }
 }

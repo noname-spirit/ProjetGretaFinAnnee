@@ -6,7 +6,6 @@ use App\Entity\ArticleBlog;
 use App\Entity\Commentaire;
 use App\Form\CommentaireFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\NewLetterAbonneRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,11 +22,8 @@ class BlogController extends AbstractController
 
         $articleRepo = $em->getRepository(ArticleBlog::class);
 
-        // Récupération du dernier article
         $latestArticle = $articleRepo->findOneBy([], ['createdAt' => 'DESC']);
-        $encodedImage = $this->encodeImage($latestArticle?->getImage());
 
-        // Récupération des autres articles (hors dernier)
         $articles = [];
         $total = 0;
 
@@ -53,7 +49,6 @@ class BlogController extends AbstractController
 
         return $this->render('front/blog.html.twig', [
             'latestArticle' => $latestArticle,
-            'encodedImage' => $encodedImage,
             'articles' => $articles,
             'currentPage' => $page,
             'totalPages' => $totalPages,
@@ -62,7 +57,6 @@ class BlogController extends AbstractController
 
     #[Route('/blog/{id}', name: 'article_show', requirements: ['id' => '\d+'])]
     public function show(ArticleBlog $article, EntityManagerInterface $entityManager): Response
-
     {
         $commentaire = new Commentaire();
         $commentaire->setArticle($article);
@@ -75,22 +69,8 @@ class BlogController extends AbstractController
 
         return $this->render('front/article_show.html.twig', [
             'article' => $article,
-            'encodedImage' => $this->encodeImage($article->getImage()),
             'commentaireForm' => $commentaireform,
             'commentaires' => $commentaires
         ]);
-    }
-
-
-
-    private function encodeImage($stream): ?string
-    {
-        if (is_resource($stream)) {
-            $contents = stream_get_contents($stream);
-            fclose($stream);
-            return base64_encode($contents);
-        }
-
-        return null;
     }
 }
